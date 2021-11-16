@@ -1,0 +1,13 @@
+{
+	"title": "Skills",
+	"skills": {
+		"Bash": "40",
+		"HTML, CSS, JS": "90",
+		"Java": "30",
+		"MongoDB": "40",
+		"MySQL": "70",
+		"NodeJS": "70",
+		"PHP": "60",
+		"Python": "80"
+	}
+}
