@@ -1,6 +1,1 @@
-[submodule "themes/--force"]
-	path = themes/--force
-	url = https://github.com/uicardioHQ/hugo-uilite
-[submodule "themes/hugo-uilite"]
-	path = themes/hugo-uilite
-	url = https://github.com/uicardioHQ/hugo-uilite
+
