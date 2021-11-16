@@ -1,0 +1,31 @@
+baseURL = "https://sud0u53r.github.io/"
+title = "Blog | Akash Gurugunti"
+theme = "hugo-theme-bootstrap"
+copyright = "Copyright © 2016-{year} Razon Yang. All Rights Reserved."
+
+# Multilingual mode
+defaultContentLanguage = "en"
+
+# Pagination
+paginate = 5
+# paginatePath = "page"
+
+# Google analytics
+# googleAnalytics = "UA-123-45"
+
+enableRobotsTXT = true
+
+enableEmoji = true
+
+pygmentsUseClasses = true
+
+[blackfriday]
+  hrefTargetBlank = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
