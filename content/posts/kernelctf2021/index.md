@@ -1,6 +1,6 @@
 +++
 title = "KernelCTF 2021 Writeups"
-description = "KernelCTF 2021 Writeups for Bogo Solve, Bogo Attack and Progressive Dynamite"
+description = "KernelCTF 2021 Writeups for Progressive Dynamite, Bogo Solve & Bogo Attack (unintended solutions)"
 date = 2021-11-17T19:16:01+05:30
 featured = true
 draft = false
