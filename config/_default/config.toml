@@ -1,10 +1,11 @@
-baseURL = "https://sud0u53r.github.io/"
-title = "Blog | Akash Gurugunti"
+baseURL = "https://Sud0u53r.github.io/"
+title = "Akash Gurugunti"
 theme = "hugo-theme-bootstrap"
 copyright = "Copyright © 2016-{year} Razon Yang. All Rights Reserved."
 
 # Multilingual mode
 defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true # If you use only one language comment this option
 
 # Pagination
 paginate = 5
@@ -14,8 +15,9 @@ paginate = 5
 # googleAnalytics = "UA-123-45"
 
 enableRobotsTXT = true
-
 enableEmoji = true
+
+# hasCJKLanguage = true # Turn on it if your content contains Chinese/Japanese/Korean Languages.
 
 pygmentsUseClasses = true
 

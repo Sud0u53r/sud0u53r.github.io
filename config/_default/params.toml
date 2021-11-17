@@ -1,16 +1,16 @@
 # mainSections = ["post", "posts"] # Default to ["posts"].
 
-# titleSeparator = "|" # Title separator. Default to "-".
+titleSeparator = "|" # Title separator. Default to "-".
 
 description = "An extreme fast, responsive and feature-rich blog theme for Hugo"
 keywords = "Hugo, Bootstrap, Blog Theme"
 # images = ["site-feature-image.jpg"]
 
 # logo = "images/logo.png" # Logo image. Default to "images/logo.webp".
-# logo = false # Disable Logo
-brand = "BOOTSTRAP"
+logo = false # Disable Logo
+brand = "Akash's Blog"
 
-palette = "blue" # Default palette. Optional.
+# palette = "blue" # Default palette. Optional.
 # palettes = ["blue", "blue gray", "brown"] # Available palettes. Default to ALL.
 # palettes = [] # Disable palette switcher.
 
@@ -24,14 +24,14 @@ palette = "blue" # Default palette. Optional.
 # Google Adsense
 googleAdsense = ""
 
-# math = true # Enable math globally.
+math = true # Enable math globally.
 # toc = false # Disable TOC globally.
 # breadcrumb = false # Disable breadcrumb
 # diagram = true
 # socialShare = false # disable social network sharing
-# searchBar = false # disable search-bar
+searchBar = false # disable search-bar
 
-# poweredBy = false # Whether to show powered by.
+poweredBy = false # Whether to show powered by.
 
 # readingTime = false # Whether to display the reading time.
 # postDate = false # Whether to display the post date in the post meta section.
@@ -82,39 +82,34 @@ viewer = true # Image Viewer
   sogou = ""
   shenma = ""
 
-[creativeCommons]
+# [creativeCommons]
   # by = true # Credit must be given to you, the creator.
   # nc = true # Only noncommercial use of your work is permitted.
   # nd = true # No derivatives or adaptations of your work are permitted.
   # sa = true # Adaptations must be shared under the same terms.
 
-[utterances]
-  repo = "razonyang/hugo-theme-bootstrap-comments" # Replace with your repository.
-  #issueTerm = "pathname" # pathname, url, title, og:title
-  #label = "comment"
+# [utterances]
+  # repo = "razonyang/hugo-theme-bootstrap-comments" # Replace with your repository.
+  # issueTerm = "pathname" # pathname, url, title, og:title
+  # label = "comment"
   # By default, light and dark mode correspond to github-light and github-dark, respectively.
   # Optional values: github-light, github-dark, preferred-color-scheme, github-dark-orange, icy-dark, dark-blue, photon-dark.
-  #theme = "" 
+  # theme = "" 
 
-[search]
-  paginate = 5 # Pagination. Default to 10.
+# [search]
+  # paginate = 5 # Pagination. Default to 10.
   # resultContentWordCount = 240 # The maximum word count of result content for displaying.
   # Fuse.js options. See https://fusejs.io/api/options.html.
-  [search.fuse]
+  # [search.fuse]
     # ignoreLocation = true
     # location = 0
     # isCaseSensitive = false
     # minMatchCharLength = 1
-    threshold = 0.1
+    # threshold = 0.1
     # distance = 100
     # useExtendedSearch = true
 
-[reward]
-  alipay = "images/reward/alipay.png"
-  wechat = "images/reward/wechat.png"
-  #paypal = "images/reward/paypal.png"
-  #patreon = "images/reward/patreon.png"
-  #liberapay = "images/reward/liberapay.png"
+# reward = false
 
 #[share]
   #addThis = "" # AddThis pubid.
