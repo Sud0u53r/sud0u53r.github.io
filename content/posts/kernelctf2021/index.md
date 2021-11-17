@@ -201,7 +201,7 @@ while True:
         print('Error. Nice Try...')
 ```
 
-It is same as the [Bogo Solve](#2-bogo-solve-249500-56-solves) challenge, but the trails variable is decremented this time, so we have to do it in lesser no.of tries (15 tries only). So initially I tried to send "0 1 1 2 2 2 ... 1000 (1000 times)", but it failed because the data to be sent for each request is over 1mb. Stuck there for an hour or so.
+It is same as the [Bogo Solve](#2-bogo-solve-249500-56-solves) challenge, but the trails variable is decremented this time in [main.py](files/bogo_attack/main.py), so we have to do it in lesser no.of tries (15 tries only). So initially I tried to send "0 1 1 2 2 2 ... 1000 (1000 times)", but it failed because the data to be sent for each request is over 1mb. Stuck there for an hour or so.
 
 After some time, I got another idea.
 
@@ -211,7 +211,7 @@ After some time, I got another idea.
 
 In this way, I used 14 tries, 716 numbers each time, to get the full list of numbers.
 
-Solution: [bogo_attack_solve.py]()
+Solution: [bogo_attack_solve.py](files/bogo_attack/solve.py)
 
 ps: This isn't the intended solution. You can find the intended solution [here](#intended-solution)
 
@@ -228,3 +228,5 @@ $$
 $$
 
 3. Since the numbers are only 10\*\*4 ( < 2\*\*15 ), 15 requests are enough for this method. In this way, we get all the sets and perform these operations 10\*\*4 times to get the correct list and submit it to get the flag.
+
+Intended solution: [intended_solution.py](files/bogo_attack/intended_solve.py)

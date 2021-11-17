@@ -1,4 +1,4 @@
-from pwn import *
+from pwn import * # pip3 install pwntools
 
 conn = remote('ctf.k3rn3l4rmy.com', '2237')
 l = [b'' for _ in range(10**4)]
