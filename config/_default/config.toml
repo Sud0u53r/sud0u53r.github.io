@@ -1,7 +1,7 @@
 baseURL = "https://Sud0u53r.github.io/"
 title = "Akash Gurugunti"
 theme = "hugo-theme-bootstrap"
-copyright = "Copyright © 2016-{year} Razon Yang. All Rights Reserved."
+copyright = "Copyright © 2016-{year} Akash Gurugunti. All Rights Reserved."
 
 # Multilingual mode
 defaultContentLanguage = "en"

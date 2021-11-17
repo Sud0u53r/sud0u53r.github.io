@@ -33,7 +33,7 @@ I solved 3 Misc challenges -- Progressive Dynamite, Bogo Solve & Bogo Attack.
 
 &nbsp;&nbsp;&nbsp;&nbsp;As mentioned above, the challenge is pretty simple. We were given a [challenge.txt](files/progressive_dynamite/challenge.txt). It is a 2D matrix of size 100x100 with very big integers and we have to find a way from top left to bottom right, by moving only bottom or right at a time, such that the total sum of number along the way is as low as possible.
 
-&nbsp;&nbsp;&nbsp;&nbsp;For people who are good at competitive coding, this will challenge will be piece of cake. Luckily, I have some experience with some algorithm techniques like divide and conquer, dynamic programming, etc., and I have used dynamic programming to solve this problem.
+&nbsp;&nbsp;&nbsp;&nbsp;For people who are good at competitive coding, this challenge will be a piece of cake. Luckily, I have some experience with algorithm techniques like divide and conquer, dynamic programming, etc., and I have used dynamic programming approach to solve this problem.
 
 Solution: [progressive_dynamite_solve.py](files/progressive_dynamite/solve.py)
 
@@ -63,11 +63,11 @@ $$
   \dfrac{(99 + 99)!}{99! * 99!} = 2.275 * 10^{58}
 $$
 
-&nbsp;&nbsp;&nbsp;&nbsp;But the trick here is, all those possibilities have common sub parts that are evaluated repetatively and unnecessarily. These parts are eliminated in dynamic programming approach, where once a part is evaluated, it is stored in a data structure and when the part is called in another possibility, the stored value is used, instead of calculating it again.
+&nbsp;&nbsp;&nbsp;&nbsp;But the trick here is, all those possibilities have common sub parts that are evaluated repetatively and unnecessarily. These parts are eliminated in dynamic programming approach, where once a part is evaluated, it is stored in a data structure and when the part has to be evaluated in another possibility, the stored value is used, instead of calculating it again.
 
-&nbsp;&nbsp;&nbsp;&nbsp;In this way, the time complexity is reduced to `O(mn)` (no.of distinct function calls possible), when m & n are parameters of function, i.e., O(100*100) and space complexity becomes `O(mn)`.
+&nbsp;&nbsp;&nbsp;&nbsp;In this way, the time complexity is reduced to `O(mn)` (no.of distinct function calls possible), where m & n are parameters of the solve function, i.e., O(100*100) and space complexity becomes `O(mn)`.
 
-ps: After getting the minimal sum, I had to subtract the first number in order to get the correct flag.
+ps: After getting the minimal sum, I had to subtract the first number from the sum in order to get the correct flag.
 
 Flag: `flag{dyn4m1c_pr0gramm1ng_pr0!}`
 
@@ -111,15 +111,15 @@ while True:
         print('Error. Nice Try...')
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;So, what the program does is, it takes list of numbers from 0 to 10,000 and shuffles them. After that, it takes input from the user, a list of space seperated indices, and if the indices are valid (exists b/w 0 - 10**4), the numbers at those indices are shuffled and returned to the user. We have to guess the correct order of 10\*\*4 numbers and send it to server to get the flag.
+&nbsp;&nbsp;&nbsp;&nbsp;So, what the program does is, it takes the list of numbers from 0 to 10,000 and shuffles them. After that, it takes input from the user, a list of space seperated indices, and if the indices are valid (exists b/w 0 and 10**4), the numbers at those indices are shuffled and returned to the user. We have to guess the correct order of 10\*\*4 numbers and send it to server to get the flag.
 
-&nbsp;&nbsp;&nbsp;&nbsp;The problem here is, the 2nd shuffle before giving the numbers. Since the numbers are shuffled, if we take more than one index at a time, we won't be able to recognise the original index of the number. With this in mind, we can try to get all the numbers one by one, by sending one index at a time, from 0 to 10,000. I quickly wrote the script for that, and it didn't work! It keeps stopping at 140-150 iterations. Apparently, the server has a certain limit for no.of requests or certain time to keep the connection open.
+&nbsp;&nbsp;&nbsp;&nbsp;The problem here is, the 2nd shuffle before giving the numbers. Since the numbers are shuffled before returing to the user, if we take more than one index at a time, we won't be able to recognise the original index of a number. With this in mind, we can try to get all the numbers one by one, by sending one index at a time, from 0 to 10,000. I quickly wrote the script for that, and it didn't work! It kept stopping after 140-150 iterations. Apparently, the server has certain limit for no.of requests or certain time to keep the connection open.
 
-&nbsp;&nbsp;&nbsp;&nbsp;So, we have to find another way to get all the numbers with significantly less no.of requests. The next day, after staring at the code for an hour, I got an idea. The idea is,
+&nbsp;&nbsp;&nbsp;&nbsp;So, we have to find some other way to get all the numbers with significantly less no.of requests. The next day, after staring at the code for an hour, I got an idea. The idea is,
 
 > 1. Send indices 0 1 1 2 2 2 3 3 3 3 ... to the server  
 > 2. From the returned list, based on the count of each number, place it in a dictionary, with count as key and number as value
-> 3. Now, repeat the process 100 times, each time sending 100 indices.
+> 3. Now, repeat the process 100 times, each time sending 100 indices with incrementing repetition.
 
 Solution: [bogo_solve.py](files/bogo_solve/solve.py)
 
@@ -201,32 +201,32 @@ while True:
         print('Error. Nice Try...')
 ```
 
-It is same as the [Bogo Solve](#2-bogo-solve-249500-56-solves) challenge, but the trails variable is decremented this time in [main.py](files/bogo_attack/main.py), so we have to do it in lesser no.of tries (15 tries only). So initially I tried to send "0 1 1 2 2 2 ... 1000 (1000 times)", but it failed because the data to be sent for each request is over 1mb. Stuck there for an hour or so.
+It is same as the [Bogo Solve](#2-bogo-solve-249500-56-solves) challenge, but the trails variable is decremented this time in [main.py](files/bogo_attack/main.py), so we have to do it in lesser no.of tries (15 tries only). So initially I tried to send "0 1 1 2 2 2 ... 1000 (1000 times)", but it failed because the data to be sent to the server for each request is over 1mb and pwntools or netcat is having problem with it and closing the connection. Stuck there for an hour or so.
 
 After some time, I got another idea.
 
-> 1. I first used one try to get all the numbers in even indices.
-> 2. Then I send "0 1 2 2 3 3 4 4 4 5 5 5 ..." and we get 0th index and 1st index number 1 time. So we don't know which it at which index.
-> 3. For that, we can use even list we got earlier. If the number that repeats only 1 time is in even list, then it is of 0th index, otherwise 1st index and so on.
+> 1. First use one try to get all the numbers in even indices.
+> 2. Then send "0 1 2 2 3 3 4 4 4 5 5 5 ..." and we get 0th index and 1st index number 1 time. So we don't know which it at which index, so store them in list in dictionary, with count as key and list of numbers with that count as value.
+> 3. For each pair, to know which number is in even index and which one is in odd index, we can use even list we got earlier. If the number exists in even list, then it is of 0th index, otherwise 1st index and so on.
 
 In this way, I used 14 tries, 716 numbers each time, to get the full list of numbers.
 
 Solution: [bogo_attack_solve.py](files/bogo_attack/solve.py)
 
-ps: This isn't the intended solution. You can find the intended solution [here](#intended-solution)
+ps: This isn't the intended solution either. You can find the intended solution [here](#intended-solution)
 
 Flag: `flag{m0d1f13d_b1n4ry_s34rch!}`
 
 ## Intended solution
 
-The intended solution is pretty awesome. I would have never thought of that. The intended way involves little bit of set theory.
+The intended solution is pretty awesome. I would never have thought of that. The intended way involves little bit of set theory.
 
-1. First we get all the indexes that has 0 in their 1st bit (MSB) and steal the numbers and store it in an array S0, then get indexes that has 0 in their 2nd bit and store the stolen numbers in set S1, and so on.
+1. First we get all the indexes that has 0 in their 1st bit (MSB) and steal the numbers in those indices and store them in a set S0, then get indices that has 0 in their 2nd bit and store the stolen numbers in set S1, and so on.
 2. Now, if we want a number at an index, say at index 10 (0b000000000001010), all we have to do is 
 $$
-  S0 \cap S1 \cap S2 \cap ... \cap S11' \cap S12 \cap S13' \cap S14
+  NUMS[10] = S0 \cap S1 \cap S2 \cap ... \cap S11' \cap S12 \cap S13' \cap S14
 $$
 
-3. Since the numbers are only 10\*\*4 ( < 2\*\*15 ), 15 requests are enough for this method. In this way, we get all the sets and perform these operations 10\*\*4 times to get the correct list and submit it to get the flag.
+3. Since the numbers are only 10\*\*4 ( < 2\*\*15 ), 15 requests are enough for this method. In this way, after we get all the sets,we can perform these operations 10\*\*4 times to get the correct list of shuffled numbers and submit them to get the flag.
 
 Intended solution: [intended_solution.py](files/bogo_attack/intended_solve.py)
