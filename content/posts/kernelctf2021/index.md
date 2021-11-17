@@ -2,30 +2,32 @@
 title = "KernelCTF 2021 Writeups"
 description = "KernelCTF 2021 Writeups for Bogo Solve, Bogo Attack and Progressive Dynamite"
 date = 2021-11-17T19:16:01+05:30
-featured = false
+featured = true
 draft = false
-comment = true
+comment = false
 toc = true
-reward = true
+reward = false
 categories = [
-  "ctf",
-  "misc"
+  "ctf"
 ]
 tags = [
   "ctf", 
   "ctfs", 
   "writeup", 
-  "writeups"
+  "writeups",
+  "misc"
 ]
 series = []
-images = []
+images = ["images/kernelctf.png"]
 +++
 
-Hey, there! After a looong gap, I'm back to CTFs.
+Hey, there! After a looong gap, I'm back to CTFs.  
+I have played [KernelCTF 2021](https://ctftime.org/event/1438) with team [zh3r0](https://ctftime.org/team/116018). We ended up at #9 worldwide.  
+I solved 3 Misc challenges -- Progressive Dynamite, Bogo Solve & Bogo Attack. 
 
-I have played [KernelCTF 2021](https://ctftime.org/event/1438) with team [zh3r0](https://ctftime.org/team/116018) and solved 3 misc challenges. We ended up at #9 worldwide.
+<!--more-->
 
-#### 1. Progressive Dynamite [100/500] (79 solves)
+## 1. Progressive Dynamite [100/500] (79 solves)
 
 ![progressive_dynamite_problem.png](images/progressive_dynamite_problem.png)
 
@@ -71,7 +73,7 @@ Flag: `flag{dyn4m1c_pr0gramm1ng_pr0!}`
 
 ---
 
-#### 2. Bogo Solve [249/500] (56 solves)
+## 2. Bogo Solve [249/500] (56 solves)
 
 ![bogo_solve_problem.png](images/bogo_solve_problem.png)
 
@@ -161,7 +163,7 @@ Flag: `flag{alg0r1thms_ar3_s0_c00l!}`
 
 ---
 
-#### 3. Bogo Attack [442 / 500] (27 solves)
+## 3. Bogo Attack [442/500] (27 solves)
 
 ![bogo_attack_problem.png](images/bogo_attack_problem.png)
 
@@ -215,7 +217,7 @@ ps: This isn't the intended solution. You can find the intended solution [here](
 
 Flag: `flag{m0d1f13d_b1n4ry_s34rch!}`
 
-#### Intended solution
+## Intended solution
 
 The intended solution is pretty awesome. I would have never thought of that. The intended way involves little bit of set theory.
 
