@@ -11,9 +11,7 @@ categories = [
   "ctf"
 ]
 tags = [
-  "ctf", 
   "ctfs", 
-  "writeup", 
   "writeups",
   "misc"
 ]
@@ -230,3 +228,5 @@ $$
 3. Since the numbers are only 10\*\*4 ( < 2\*\*15 ), 15 requests are enough for this method. In this way, after we get all the sets,we can perform these operations 10\*\*4 times to get the correct list of shuffled numbers and submit them to get the flag.
 
 Intended solution: [intended_solution.py](files/bogo_attack/intended_solve.py)
+
+##### Thanks for reading! {align=center}
