@@ -19,8 +19,8 @@ series = []
 images = ["images/allesctf.png"]
 +++
 
-I have played [AllesCTF 2021](https://ctftime.org/event/1091) with team [Invaders](https://ctftime.org/team/71588). We ended up at #21 worldwide.  
-I solved 1 Web challenge -- Only Freights, along with our team captain [@S1r1u5_](https://twitter.com/@S1r1u5_)
+I have played [AllesCTF 2020](https://ctftime.org/event/1091) with team [Invaders](https://ctftime.org/team/71588). We ended up at #21 worldwide.  
+I solved 1 web challenge -- Only Freights, along with our team captain [@S1r1u5_](https://twitter.com/@S1r1u5_)
 
 <!--more-->
 
@@ -219,5 +219,7 @@ print('[+] Uploaded exploit to /tmp/exp...')
 ```
 
 Flag: `ALLES{Gr3ta_w0uld_h4te_th1s_p0lluted_sh3ll}`
+
+---
 
 ##### Thanks for reading! {align=center}

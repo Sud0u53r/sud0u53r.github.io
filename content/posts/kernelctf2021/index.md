@@ -229,4 +229,6 @@ $$
 
 Intended solution: [intended_solution.py](files/bogo_attack/intended_solve.py)
 
+---
+
 ##### Thanks for reading! {align=center}
