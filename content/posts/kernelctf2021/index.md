@@ -219,7 +219,7 @@ Flag: `flag{m0d1f13d_b1n4ry_s34rch!}`
 
 The intended solution is pretty awesome. I would never have thought of that. The intended way involves little bit of set theory.
 
-1. First we get all the indexes that has 0 in their 1st bit (MSB) and steal the numbers in those indices and store them in a set S0, then get indices that has 0 in their 2nd bit and store the stolen numbers in set S1, and so on.
+1. First we get all the indices that has 0 in their 1st bit (MSB) and steal the numbers in those indices and store them in a set S0, then get indices that has 0 in their 2nd bit and store the stolen numbers in set S1, and so on.
 2. Now, if we want a number at an index, say at index 10 (0b000000000001010), all we have to do is 
 $$
   NUMS[10] = S0 \cap S1 \cap S2 \cap ... \cap S11' \cap S12 \cap S13' \cap S14
