@@ -12,7 +12,7 @@ paginate = 5
 # paginatePath = "page"
 
 # Google analytics
-# googleAnalytics = "UA-123-45"
+googleAnalytics = "294901360"
 
 enableRobotsTXT = true
 enableEmoji = true
