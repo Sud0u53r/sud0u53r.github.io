@@ -2,7 +2,6 @@
 <meta name="keywords" content="{{ if .IsPage }}{{ delimit .Keywords ", " }}{{ else }}{{ $.Site.Params.keywords }}{{ end }}" />
 <meta name="description" content="{{ if .IsPage }}{{ .Description }}{{ else }}{{ $.Site.Params.description }}{{ end }}" />
 
-
 <meta itemprop="name" content="{{ .Title }}">
 <meta itemprop="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
 
@@ -77,18 +76,18 @@
 
 
 {{- with $.Params.images -}}
-<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content='{{ index . 0 | printf "%s%s" $.Permalink }}'/>
 {{ else -}}
 {{- $images := $.Resources.ByType "image" -}}
 {{- $featured := $images.GetMatch "*feature*" -}}
 {{- if not $featured }}{{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
 {{- with $featured -}}
-<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content="{{ $featured.Permalink }}"/>
 {{- else -}}
 {{- with $.Site.Params.images -}}
-<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content='{{ index . 0 | printf "%s%s" $.Permalink }}'/>
 {{ else -}}
 <meta name="twitter:card" content="summary"/>
