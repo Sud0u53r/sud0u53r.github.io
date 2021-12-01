@@ -71,7 +71,7 @@ prepare("SELECT * FROM notes WHERE session_id = :sid AND key = :key", {
 
 &nbsp;&nbsp;&nbsp;&nbsp;sqlEscape replaces any substring that matches with /[^ -~]|[']/g with empty string. The supported characters are quite extensive, but the single quote is clearly specified to be removed.The post request route `/cmd/babyheap/add/` in babyheap.js has an extra parameter "data", which doesn't have any regex restrictions. But, then again we're stuck with the regex check in sqlEscape.
 
-&nbsp;&nbsp;&nbsp;&nbsp;I tried serveral other methods to exploit the given api routes to list and read files related to postgres data, logs, etc., but nothing worked. I setup postgresql and the server locally for debugging.
+&nbsp;&nbsp;&nbsp;&nbsp;I tried several other methods to exploit the given api routes to list and read files related to postgres data, logs, etc., but nothing worked. I then setup postgresql and the server locally for debugging.
 
 &nbsp;&nbsp;&nbsp;&nbsp;After a while, I tried to bruteforce and check if any of the characters allowed by sqlEscape can escape from the single quotes and wrote a loop in python to check it.
 
