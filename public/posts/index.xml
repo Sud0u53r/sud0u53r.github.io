@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Sud0u53r&#39;s Blog</title>
+    <link>https://Sud0u53r.github.io/posts/</link>
+    <description>Recent content in Posts on Sud0u53r&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2018-{year} Akash Gurugunti. All Rights Reserved.</copyright>
+    <lastBuildDate>Sun, 28 Nov 2021 17:46:54 +0530</lastBuildDate><atom:link href="https://Sud0u53r.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DragonCTF 2021 Writeup</title>
+      <link>https://Sud0u53r.github.io/posts/dragonctf2021/</link>
+      <pubDate>Sun, 28 Nov 2021 17:46:54 +0530</pubDate>
+      
+      <guid>https://Sud0u53r.github.io/posts/dragonctf2021/</guid>
+      <description>&lt;p&gt;I have played &lt;a href=&#34;https://ctftime.org/event/1457&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;DragonCTF 2021&lt;/a&gt;
+ with team &lt;a href=&#34;https://ctftime.org/team/155019&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Water Paddlers&lt;/a&gt;
+. We ended up at #7 worldwide.&lt;br&gt;
+I solved 1 web challange &amp;ndash; webpwn along with my teammates &lt;a href=&#34;https://twitter.com/rekter0&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;@rekter0&lt;/a&gt;
+, &lt;a href=&#34;https://twitter.com/PewGrand&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;@PewGrand&lt;/a&gt;
+ and &lt;a href=&#34;https://twitter.com/ZeddYu_Lu&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;@ZeddYu_Lu&lt;/a&gt;
+.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>KernelCTF 2021 Writeups</title>
+      <link>https://Sud0u53r.github.io/posts/kernelctf2021/</link>
+      <pubDate>Wed, 17 Nov 2021 19:16:01 +0530</pubDate>
+      
+      <guid>https://Sud0u53r.github.io/posts/kernelctf2021/</guid>
+      <description>&lt;p&gt;Hey, there! After a looong gap, I&amp;rsquo;m back to CTFs.&lt;br&gt;
+I have played &lt;a href=&#34;https://ctftime.org/event/1438&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;KernelCTF 2021&lt;/a&gt;
+ with team &lt;a href=&#34;https://ctftime.org/team/116018&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;zh3r0&lt;/a&gt;
+. We ended up at #9 worldwide.&lt;br&gt;
+I solved 3 Misc challenges &amp;ndash; Progressive Dynamite, Bogo Solve &amp;amp; Bogo Attack.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>TokyoWesterns CTF 2020 Writeup [urlcheck V1&amp;V2]</title>
+      <link>https://Sud0u53r.github.io/posts/tokyowesternsctf2020/</link>
+      <pubDate>Sun, 20 Sep 2020 08:59:00 +0530</pubDate>
+      
+      <guid>https://Sud0u53r.github.io/posts/tokyowesternsctf2020/</guid>
+      <description>&lt;p&gt;I have played &lt;a href=&#34;https://ctftime.org/event/1086&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;TokyoWesterns CTF 2020&lt;/a&gt;
+ with team &lt;a href=&#34;https://ctftime.org/team/71588&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Invaders&lt;/a&gt;
+. We ended up at #21 worldwide.&lt;br&gt;
+I solved only 2 web challenges &amp;ndash; Urlcheck v1 and Urlcheck v2. Should try harder next time!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AllesCTF 2020 Writeup [Only Freights]</title>
+      <link>https://Sud0u53r.github.io/posts/allesctf2020/</link>
+      <pubDate>Sun, 06 Sep 2020 07:34:48 +0530</pubDate>
+      
+      <guid>https://Sud0u53r.github.io/posts/allesctf2020/</guid>
+      <description>&lt;p&gt;I have played &lt;a href=&#34;https://ctftime.org/event/1091&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;AllesCTF 2020&lt;/a&gt;
+ with team &lt;a href=&#34;https://ctftime.org/team/71588&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Invaders&lt;/a&gt;
+. We ended up at #21 worldwide.&lt;br&gt;
+I solved 1 web challenge &amp;ndash; Only Freights, along with our team captain &lt;a href=&#34;https://twitter.com/@S1r1u5_&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;@S1r1u5_&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gynvael Coldwind Twitter Challenges</title>
+      <link>https://Sud0u53r.github.io/posts/gynvael-coldwind-twitter-challenges/</link>
+      <pubDate>Thu, 27 Aug 2020 08:59:32 +0530</pubDate>
+      
+      <guid>https://Sud0u53r.github.io/posts/gynvael-coldwind-twitter-challenges/</guid>
+      <description>&lt;p&gt;Scrolling through the twitter, I found a series of nodejs challenges posted by &lt;a href=&#34;https://twitter.com/gynvael&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;@gynvael&lt;/a&gt;
+. I gave it a try and solved 3 out of 5 challenges!&lt;/p&gt;
+&lt;p&gt;Here are the writeups for the challenges I have solved&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

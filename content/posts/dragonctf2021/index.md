@@ -2,7 +2,7 @@
 title = "DragonCTF 2021 Writeup"
 description = "DragonCTF 2021 Writeup for Web challenge -- webpwn"
 date = 2021-11-28T17:46:54+05:30
-featured = true
+featured = false
 draft = false
 comment = false
 toc = true
