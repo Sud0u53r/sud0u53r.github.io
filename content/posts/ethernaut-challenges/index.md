@@ -430,10 +430,11 @@ contract Force {/*
 > **Solution:**  
 > * Our goal is to make the balance of the contract greater than 0.  
 > * Since there are no payable fallback or receive functions implemented in the contract, it reverts any call it gets. So it is not possible to directly send ether to such contract.  
-> * There are 2 ways we can send ether to such contracts:
+> * There are 3 ways we can send ether to such contracts:
 >   1. We can send ether to the address of the contract before it is deployed. We can calculate its address beforehand based on the address of the contract creator and its nonce.  
 >   2. We can create a contract that uses selfdestruct function that sends its ether to this contract.  
-> * Since the contract is already deployed, we can only use the 2nd method to send ether to the challenge contract.  
+>   3. We can set the coinbase address of a block to the contract address, so when the block is mined, the ether will be transferred to that address.
+> * Since the contract is already deployed and setting that address as coinbase address is not a feasible attack scenario, we can only use the 2nd method to send ether to the challenge contract.  
 > * Deploy the exploit contract [7_force_attack.sol](files/solution_contracts/7_force_attack.sol) with some ether and call attack function with _contract parameter set to challenge contract address to complete this challenge.
 > ```sol
 > // SPDX-License-Identifier: MIT
@@ -1053,28 +1054,26 @@ contract MagicNum {
 > * Our goal is to write a contract that returns 42 number when `whatIsTheMeaningOfLife()` function is called. But the length of our evm code should not exceed 10 bytes.
 > * I wrote assembly code that deploys a 10 bytes of evm code that returns 42 when called. Then I converted it into hex bytecode using pyevmasm in python and then used web3js to deploy the contract.
 > ```asm
-> PUSH1 0xd
-> JUMP
-> 
-> PUSH1 0x2a
-> PUSH1 0x0
-> MSTORE
-> PUSH1 0x20
-> PUSH1 0x0
-> RETURN
-> 
-> JUMPDEST
-> PUSH1 0x3
-> PUSH1 0xd
-> SUB
-> PUSH1 0x3
-> PUSH1 0x0
-> CODECOPY
-> PUSH1 0x3
-> PUSH1 0xd
-> SUB
-> PUSH1 0x0
-> RETURN
+> 00000000: PUSH1 0xd
+> 00000002: JUMP
+> 00000003: PUSH1 0x2a
+> 00000005: PUSH1 0x0
+> 00000007: MSTORE
+> 00000008: PUSH1 0x20
+> 0000000a: PUSH1 0x0
+> 0000000c: RETURN
+> 0000000d: JUMPDEST
+> 0000000e: PUSH1 0x3
+> 00000010: PUSH1 0xd
+> 00000012: SUB
+> 00000013: PUSH1 0x3
+> 00000015: PUSH1 0x0
+> 00000017: CODECOPY
+> 00000018: PUSH1 0x3
+> 0000001a: PUSH1 0xd
+> 0000001c: SUB
+> 0000001d: PUSH1 0x0
+> 0000001f: RETURN
 > ```
 > ```py
 > import pyevmasm
