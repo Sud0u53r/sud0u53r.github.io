@@ -1,7 +1,7 @@
 name = "Akash Gurugunti"
 avatar = "images/me.jpg" # Avatar image. Default to "images/profile.webp".
 bio = "Cyber Security, Blockchain"
-company = "Job Hunting"
+company = "OtterSec LLC"
 location = "Visakhapatnam, India"
 # alternatives:
 # location = "<a href='https://goo.gl/maps/UWFWsLdCp7AiXvWP7'>Visakhapatnam, India</a>"
