@@ -6,13 +6,49 @@
     <description>Recent content in Tags on Sud0u53r&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2018-{year} Akash Gurugunti. All Rights Reserved.</copyright>
-    <lastBuildDate>Sun, 28 Nov 2021 17:46:54 +0530</lastBuildDate><atom:link href="https://Sud0u53r.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Mar 2022 14:01:31 +0530</lastBuildDate><atom:link href="https://Sud0u53r.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>blockchain</title>
+      <link>https://Sud0u53r.github.io/tags/blockchain/</link>
+      <pubDate>Mon, 21 Mar 2022 14:01:31 +0530</pubDate>
+      
+      <guid>https://Sud0u53r.github.io/tags/blockchain/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>ctfs</title>
       <link>https://Sud0u53r.github.io/tags/ctfs/</link>
-      <pubDate>Sun, 28 Nov 2021 17:46:54 +0530</pubDate>
+      <pubDate>Mon, 21 Mar 2022 14:01:31 +0530</pubDate>
       
       <guid>https://Sud0u53r.github.io/tags/ctfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ethereum</title>
+      <link>https://Sud0u53r.github.io/tags/ethereum/</link>
+      <pubDate>Mon, 21 Mar 2022 14:01:31 +0530</pubDate>
+      
+      <guid>https://Sud0u53r.github.io/tags/ethereum/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>evm</title>
+      <link>https://Sud0u53r.github.io/tags/evm/</link>
+      <pubDate>Mon, 21 Mar 2022 14:01:31 +0530</pubDate>
+      
+      <guid>https://Sud0u53r.github.io/tags/evm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>writeups</title>
+      <link>https://Sud0u53r.github.io/tags/writeups/</link>
+      <pubDate>Mon, 21 Mar 2022 14:01:31 +0530</pubDate>
+      
+      <guid>https://Sud0u53r.github.io/tags/writeups/</guid>
       <description></description>
     </item>
     
@@ -22,15 +58,6 @@
       <pubDate>Sun, 28 Nov 2021 17:46:54 +0530</pubDate>
       
       <guid>https://Sud0u53r.github.io/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>writeups</title>
-      <link>https://Sud0u53r.github.io/tags/writeups/</link>
-      <pubDate>Sun, 28 Nov 2021 17:46:54 +0530</pubDate>
-      
-      <guid>https://Sud0u53r.github.io/tags/writeups/</guid>
       <description></description>
     </item>
     

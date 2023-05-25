@@ -2,9 +2,9 @@ name = "Akash Gurugunti"
 avatar = "images/me.jpg" # Avatar image. Default to "images/profile.webp".
 bio = "Cyber Security, Blockchain"
 company = "OtterSec LLC"
-location = "Visakhapatnam, India"
+location = "<a href='https://goo.gl/maps/FAU9GUmrdMSmuBBG8' target='_blank'>Hyderabad, India</a>"
 # alternatives:
-# location = "<a href='https://goo.gl/maps/UWFWsLdCp7AiXvWP7'>Visakhapatnam, India</a>"
+# location = "<a href='https://goo.gl/maps/FAU9GUmrdMSmuBBG8'>Hyderabad, India</a>"
 # location = "<a href='https://www.google.com/maps/search/Earth'>Earth</a>"
 # about = "https://domain.tld" # The external about page. The internal about page will be used if not set.
 

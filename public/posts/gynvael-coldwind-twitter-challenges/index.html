@@ -14,7 +14,7 @@
 <meta itemprop="name" content="Gynvael Coldwind Twitter Challenges">
 <meta itemprop="description" content="Solved some nodejs twitter challenges posted by Gynvael coldwind on twitter"><meta itemprop="datePublished" content="2020-08-27T08:59:32+05:30" />
 <meta itemprop="dateModified" content="2020-08-27T08:59:32+05:30" />
-<meta itemprop="wordCount" content="744"><meta itemprop="image" content='https://Sud0u53r.github.io/posts/gynvael-coldwind-twitter-challenges/images/_card.png'>
+<meta itemprop="wordCount" content="745"><meta itemprop="image" content='https://Sud0u53r.github.io/posts/gynvael-coldwind-twitter-challenges/images/_card.png'>
 <meta itemprop="keywords" content="twitter,challenge,writeups,web," /><meta property="og:title" content="Gynvael Coldwind Twitter Challenges" />
 <meta property="og:description" content="Solved some nodejs twitter challenges posted by Gynvael coldwind on twitter" />
 <meta property="og:type" content="article" />
@@ -27,15 +27,15 @@
 <meta name="twitter:title" content="Gynvael Coldwind Twitter Challenges"/>
 <meta name="twitter:description" content="Solved some nodejs twitter challenges posted by Gynvael coldwind on twitter"/>
 <meta name="twitter:site" content="@Sud0u53r"/>
-<link rel="preload" href="https://Sud0u53r.github.io/css/bundle.min.63b7b82d478e522a90ea9bdc402b2adc8c8a6628aa4c169b00c47271e3562766.css" integrity="sha256-Y7e4LUeOUiqQ6pvcQCsq3IyKZiiqTBabAMRyceNWJ2Y=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://Sud0u53r.github.io/css/bundle.min.63b7b82d478e522a90ea9bdc402b2adc8c8a6628aa4c169b00c47271e3562766.css" integrity="sha256-Y7e4LUeOUiqQ6pvcQCsq3IyKZiiqTBabAMRyceNWJ2Y=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
+<link rel="preload" href="https://Sud0u53r.github.io/css/bundle.min.fcd024e77e7ca8dc30926e1b5389582b45bdb44482ee20d1ae3aae2c00de9817.css" integrity="sha256-/NAk5358qNwwkm4bU4lYK0W9tESC7iDRrjquLADemBc=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://Sud0u53r.github.io/css/bundle.min.fcd024e77e7ca8dc30926e1b5389582b45bdb44482ee20d1ae3aae2c00de9817.css" integrity="sha256-/NAk5358qNwwkm4bU4lYK0W9tESC7iDRrjquLADemBc=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code" type="text/css" media="all" />
 <style>
  body { font-family: 'Consolas'; }
  code { font-family: 'Fira Code'; }
  code { tab-size: 4; }
 </style></head>
-  <body><script src="https://Sud0u53r.github.io/js/bootstrap.min.2ab67bcb0cdc2c285903b975092b17ec5977f2b2c3db9e2c397bb165a914cccf.js" integrity="sha256-KrZ7ywzcLChZA7l1CSsX7Fl38rLD254sOXuxZakUzM8=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
+  <body><script src="https://Sud0u53r.github.io/js/bootstrap.min.062c2e66b557cb779d59cedff7e0cc76e84beb665a1076e474e87d940be44245.js" integrity="sha256-BiwuZrVXy3edWc7f9&#43;DMduhL62ZaEHbkdOh9lAvkQkU=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
   <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,19 +136,19 @@
     <div class="collapse navbar-collapse" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContent">
       
       <ul class="navbar-nav ms-auto"><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/archives">
+          <a class="nav-link" href="https://Sud0u53r.github.io/archives/">
             <i class="fas fa-fw fa-file-archive"></i>Archives
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/categories">
+          <a class="nav-link" href="https://Sud0u53r.github.io/categories/">
             <i class="fas fa-fw fa-folder"></i>Categories
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/tags">
+          <a class="nav-link" href="https://Sud0u53r.github.io/tags/">
             <i class="fas fa-fw fa-tags"></i>Tags
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/series">
+          <a class="nav-link" href="https://Sud0u53r.github.io/series/">
             <i class="fas fa-fw fa-columns"></i>Series
           </a>
         </li></ul>
@@ -215,97 +215,97 @@
 <br>
 <strong>Source code:</strong> <a href="files/chall1.py">source.py</a>
 </p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="ch">#!/usr/bin/python3</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="k">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">render_template_string</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">urlparse</span>
-<span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="n">FLAG</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;FLAG&#39;</span><span class="p">,</span> <span class="s2">&#34;???&#34;</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;task.py&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-	<span class="n">SOURCE</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/secret&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">secret</span><span class="p">():</span>
-	<span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span> <span class="o">!=</span> <span class="s2">&#34;127.0.0.1&#34;</span><span class="p">:</span>
-		<span class="k">return</span> <span class="s2">&#34;Access denied!&#34;</span>
-
-	<span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;X-Secret&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&#34;YEAH&#34;</span><span class="p">:</span>
-		<span class="k">return</span> <span class="s2">&#34;Nope.&#34;</span>
-
-	<span class="k">return</span> <span class="n">f</span><span class="s2">&#34;GOOD WORK! Flag is </span><span class="si">{FLAG}</span><span class="s2">&#34;</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-	<span class="k">return</span> <span class="n">render_template_string</span><span class="p">(</span>
-			<span class="s2">&#34;&#34;&#34;
-</span><span class="s2">			&amp;lt;html&amp;gt;
-</span><span class="s2">				&amp;lt;body&amp;gt;
-</span><span class="s2">					&amp;lt;h1&amp;gt;URL proxy with language preference!&amp;lt;/h1&amp;gt;
-</span><span class="s2">					&amp;lt;form action=&#34;/fetch&#34; method=&#34;POST&#34;&amp;gt;
-</span><span class="s2">						&amp;lt;p&amp;gt;URL: &amp;lt;input name=&#34;url&#34; value=&#34;http://gynvael.coldwind.pl/&#34;&amp;gt;&amp;lt;/p&amp;gt;
-</span><span class="s2">						&amp;lt;p&amp;gt;Language code: &amp;lt;input name=&#34;lang&#34; value=&#34;en-US&#34;&amp;gt;&amp;lt;/p&amp;gt;
-</span><span class="s2">						&amp;lt;p&amp;gt;&amp;lt;input type=&#34;submit&#34;&amp;gt;&amp;lt;/p&amp;gt;
-</span><span class="s2">					&amp;lt;/form&amp;gt;
-</span><span class="s2">					&amp;lt;pre&amp;gt;
-</span><span class="s2">Task source:
-</span><span class="s2">{{ src }}
-</span><span class="s2">					&amp;lt;/pre&amp;gt;
-</span><span class="s2">				&amp;lt;/body&amp;gt;
-</span><span class="s2">			&amp;lt;/html&amp;gt;
-</span><span class="s2">			&#34;&#34;&#34;</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="n">SOURCE</span><span class="p">)</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/fetch&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;POST&#34;</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">fetch</span><span class="p">():</span>
-	<span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;url&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
-	<span class="n">lang</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;lang&#34;</span><span class="p">,</span> <span class="s2">&#34;en-US&#34;</span><span class="p">)</span>
-
-	<span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="p">:</span>
-		<span class="k">return</span> <span class="s2">&#34;URL must be provided&#34;</span>
-
-	<span class="n">data</span> <span class="o">=</span> <span class="n">fetch_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">lang</span><span class="p">)</span>
-	<span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-		<span class="k">return</span> <span class="s2">&#34;Failed.&#34;</span>
-
-	<span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mimetype</span><span class="o">=</span><span class="s2">&#34;text/plain;charset=utf-8&#34;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">fetch_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">lang</span><span class="p">):</span>
-	<span class="n">o</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-	<span class="n">req</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-		<span class="n">f</span><span class="s2">&#34;GET </span><span class="si">{o.path}</span><span class="s2"> HTTP/1.1&#34;</span><span class="p">,</span>
-		<span class="n">f</span><span class="s2">&#34;Host: </span><span class="si">{o.netloc}</span><span class="s2">&#34;</span><span class="p">,</span>
-		<span class="n">f</span><span class="s2">&#34;Connection: close&#34;</span><span class="p">,</span>
-		<span class="n">f</span><span class="s2">&#34;Accept-Language: </span><span class="si">{lang}</span><span class="s2">&#34;</span><span class="p">,</span>
-		<span class="s2">&#34;&#34;</span><span class="p">,</span>
-		<span class="s2">&#34;&#34;</span>
-	<span class="p">])</span>
-
-	<span class="n">res</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">netloc</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-		<span class="n">host</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-		<span class="n">port</span> <span class="o">=</span> <span class="mi">80</span>
-	<span class="k">else</span><span class="p">:</span>
-		<span class="n">host</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-		<span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-	<span class="n">data</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span>
-	<span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
-		<span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
-		<span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
-		<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-			<span class="n">data_part</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-			<span class="k">if</span> <span class="ow">not</span> <span class="n">data_part</span><span class="p">:</span>
-				<span class="k">break</span>
-			<span class="n">data</span> <span class="o">+=</span> <span class="n">data_part</span>
-
-	<span class="k">return</span> <span class="n">data</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-	<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&#34;0.0.0.0&#34;</span><span class="p">)</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/python3</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">Response</span><span class="p">,</span> <span class="n">render_template_string</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">socket</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">FLAG</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;FLAG&#39;</span><span class="p">,</span> <span class="s2">&#34;???&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;task.py&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">SOURCE</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/secret&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">secret</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span> <span class="o">!=</span> <span class="s2">&#34;127.0.0.1&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="s2">&#34;Access denied!&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;X-Secret&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&#34;YEAH&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="s2">&#34;Nope.&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="sa">f</span><span class="s2">&#34;GOOD WORK! Flag is </span><span class="si">{</span><span class="n">FLAG</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">render_template_string</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">			<span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">			&amp;lt;html&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">				&amp;lt;body&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">					&amp;lt;h1&amp;gt;URL proxy with language preference!&amp;lt;/h1&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">					&amp;lt;form action=&#34;/fetch&#34; method=&#34;POST&#34;&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">						&amp;lt;p&amp;gt;URL: &amp;lt;input name=&#34;url&#34; value=&#34;http://gynvael.coldwind.pl/&#34;&amp;gt;&amp;lt;/p&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">						&amp;lt;p&amp;gt;Language code: &amp;lt;input name=&#34;lang&#34; value=&#34;en-US&#34;&amp;gt;&amp;lt;/p&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">						&amp;lt;p&amp;gt;&amp;lt;input type=&#34;submit&#34;&amp;gt;&amp;lt;/p&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">					&amp;lt;/form&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">					&amp;lt;pre&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">Task source:
+</span></span></span><span class="line"><span class="cl"><span class="s2">{{ src }}
+</span></span></span><span class="line"><span class="cl"><span class="s2">					&amp;lt;/pre&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">				&amp;lt;/body&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">			&amp;lt;/html&amp;gt;
+</span></span></span><span class="line"><span class="cl"><span class="s2">			&#34;&#34;&#34;</span><span class="p">,</span> <span class="n">src</span><span class="o">=</span><span class="n">SOURCE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/fetch&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;POST&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fetch</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="n">url</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;url&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">lang</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;lang&#34;</span><span class="p">,</span> <span class="s2">&#34;en-US&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="s2">&#34;URL must be provided&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">data</span> <span class="o">=</span> <span class="n">fetch_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">lang</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="s2">&#34;Failed.&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mimetype</span><span class="o">=</span><span class="s2">&#34;text/plain;charset=utf-8&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fetch_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">lang</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">o</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">req</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">		<span class="sa">f</span><span class="s2">&#34;GET </span><span class="si">{</span><span class="n">o</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2"> HTTP/1.1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="sa">f</span><span class="s2">&#34;Host: </span><span class="si">{</span><span class="n">o</span><span class="o">.</span><span class="n">netloc</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="sa">f</span><span class="s2">&#34;Connection: close&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="sa">f</span><span class="s2">&#34;Accept-Language: </span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">res</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">netloc</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">host</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">		<span class="n">port</span> <span class="o">=</span> <span class="mi">80</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">host</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">		<span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">data</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="n">data_part</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="ow">not</span> <span class="n">data_part</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">				<span class="k">break</span>
+</span></span><span class="line"><span class="cl">			<span class="n">data</span> <span class="o">+=</span> <span class="n">data_part</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&#34;0.0.0.0&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
 <p><strong>Solution</strong></p>
 <p><strong>cURL command:</strong> curl -XPOST &lsquo;http://35.204.139.205:5000/fetch&rsquo; &ndash;data-raw &lsquo;url=http://localhost:5000/secret&amp;lang=XX%0D%0AX-Secret:%20YEAH&rsquo;</p>
 <p><strong>Explanation</strong></p>
@@ -317,50 +317,51 @@
 <br>
 <strong>Source code:</strong> <a href="files/chall2.js">source.js</a>
 </p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;express&#34;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;fs&#34;</span><span class="p">);</span>
-
-<span class="kr">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">5002</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">FLAG</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">FLAG</span> <span class="o">||</span> <span class="s2">&#34;???&#34;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">SOURCE</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s2">&#34;app.js&#34;</span><span class="p">);</span>
-
-<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s2">&#34;text/plain;charset=utf-8&#34;</span><span class="p">);</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;Level 2\n\n&#34;</span><span class="p">);</span>
-
-	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&#34;X&#34;</span> <span class="k">in</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">))</span> <span class="p">{</span>
-		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">SOURCE</span><span class="p">);</span>
-		<span class="k">return</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">X</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">800</span><span class="p">)</span> <span class="p">{</span>
-		<span class="kr">const</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">X</span><span class="p">);</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;Go away.&#34;</span><span class="p">);</span>
-			<span class="k">return</span><span class="p">;</span>
-		<span class="p">}</span>
-
-		<span class="k">try</span> <span class="p">{</span>
-			<span class="kr">const</span> <span class="nx">k</span> <span class="o">=</span> <span class="s2">&#34;&amp;lt;&#34;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="s2">&#34;&amp;gt;&#34;</span><span class="p">;</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;Close, but no cigar.&#34;</span><span class="p">);</span>
-		<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
-			<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">FLAG</span><span class="p">);</span>
-		<span class="p">}</span>
-	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;No way.&#34;</span><span class="p">);</span>
-		<span class="k">return</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Challenge listening at port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;express&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;fs&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">5002</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">FLAG</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">FLAG</span> <span class="o">||</span> <span class="s2">&#34;???&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">SOURCE</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s2">&#34;app.js&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s2">&#34;text/plain;charset=utf-8&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;Level 2\n\n&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&#34;X&#34;</span> <span class="k">in</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">SOURCE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">X</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">800</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="kr">const</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">X</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;Go away.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="kr">const</span> <span class="nx">k</span> <span class="o">=</span> <span class="s2">&#34;&amp;lt;&#34;</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="s2">&#34;&amp;gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;Close, but no cigar.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">FLAG</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;No way.&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Challenge listening at port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><blockquote>
 <p><strong>Solution</strong></p>
-<p><strong>cURL command:</strong> curl &lsquo;<a href="http://challenges.gynvael.stream:5002/?X%5Blength%5D=801&amp;X%5BtoString%5D=1'">http://challenges.gynvael.stream:5002/?X[length]=801&amp;X[toString]=1'</a></p>
+<p><strong>cURL command:</strong> curl &lsquo;<a href="http://challenges.gynvael.stream:5002/?X[length]=801&amp;X[toString]=1%27" target="_blank" rel="noopener noreferrer">http://challenges.gynvael.stream:5002/?X[length]=801&X[toString]=1'</a>
+</p>
 <p><strong>Explanation</strong></p>
 <p>Here the param X can be an object by sending get param as X[key]=value and this leads to prototype pollution. To satisfy the given conditions, we have to set X[length] &gt; 800 and X[toString] property to some value. Because in JS while concatenating an object with a string, the toString method is called and if we change it&rsquo;s value, it raises an error and gives the flag!</p>
 </blockquote>
@@ -370,55 +371,56 @@
 <br>
 <strong>Source code:</strong> <a href="files/chall4.js">source.js</a>
 </p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
-
-<span class="kr">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">5004</span>
-<span class="kr">const</span> <span class="nx">FLAG</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">FLAG</span> <span class="o">||</span> <span class="s2">&#34;???&#34;</span>
-<span class="kr">const</span> <span class="nx">SOURCE</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">basename</span><span class="p">(</span><span class="nx">__filename</span><span class="p">))</span>
-
-<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">text</span><span class="p">({</span>
-	<span class="nx">verify</span><span class="o">:</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-		<span class="kr">const</span> <span class="nx">magic</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="s1">&#39;ShowMeTheFlag&#39;</span><span class="p">)</span>
-
-		<span class="k">if</span> <span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">magic</span><span class="p">))</span> <span class="p">{</span>
-			<span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;Go away.&#34;</span><span class="p">)</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
-<span class="p">}))</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/flag&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain;charset=utf-8&#39;</span><span class="p">)</span>
-	<span class="k">if</span> <span class="p">((</span><span class="k">typeof</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span> <span class="o">!==</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="p">{</span>
-		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;What?&#34;</span><span class="p">)</span>
-		<span class="k">return</span>
-	<span class="p">}</span>
-
-	<span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;ShowMeTheFlag&#39;</span><span class="p">))</span> <span class="p">{</span>
-		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">FLAG</span><span class="p">)</span>
-		<span class="k">return</span>
-	<span class="p">}</span>
-
-	<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;Say the magic phrase!&#34;</span><span class="p">)</span>
-<span class="p">})</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain;charset=utf-8&#39;</span><span class="p">)</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;Level 4\n\n&#34;</span><span class="p">)</span>
-	<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">SOURCE</span><span class="p">)</span>
-<span class="p">})</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Challenge listening at port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-<span class="p">})</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">5004</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">FLAG</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">FLAG</span> <span class="o">||</span> <span class="s2">&#34;???&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">SOURCE</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">basename</span><span class="p">(</span><span class="nx">__filename</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">text</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">verify</span><span class="o">:</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="kr">const</span> <span class="nx">magic</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="s1">&#39;ShowMeTheFlag&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="nx">body</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">magic</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;Go away.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/flag&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain;charset=utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">((</span><span class="k">typeof</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span> <span class="o">!==</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;What?&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;ShowMeTheFlag&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">FLAG</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&#34;Say the magic phrase!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="mi">200</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain;charset=utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;Level 4\n\n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">SOURCE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Challenge listening at port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div><blockquote>
 <p><strong>Solution</strong></p>
-<p><strong>cURL command:</strong> echo -e &ldquo;\x00S\x00h\x00o\x00w\x00M\x00e\x00T\x00h\x00e\x00F\x00l\x00a\x00g&rdquo; | curl -XPOST &lsquo;<a href="http://challenges.gynvael.stream:5004/flag'">http://challenges.gynvael.stream:5004/flag'</a> &ndash;data-binary @- -H &lsquo;Content-Type: text/plain;charset=UTF-16&rsquo;</p>
+<p><strong>cURL command:</strong> echo -e &ldquo;\x00S\x00h\x00o\x00w\x00M\x00e\x00T\x00h\x00e\x00F\x00l\x00a\x00g&rdquo; | curl -XPOST &lsquo;<a href="http://challenges.gynvael.stream:5004/flag%27" target="_blank" rel="noopener noreferrer">http://challenges.gynvael.stream:5004/flag'</a>
+ &ndash;data-binary @- -H &lsquo;Content-Type: text/plain;charset=UTF-16&rsquo;</p>
 <p><strong>Explanation</strong></p>
 <p>First things first, points to note:</p>
 <ol>
@@ -454,24 +456,23 @@
   
    />
 </div>
-    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Backend Developement &amp; Cyber Security</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> Job Hunting</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> Visakhapatnam, India</div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="https://Sud0u53r.github.io/about/"> About Me</a></div><br /></div>
+    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Cyber Security, Blockchain</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> OtterSec LLC</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> Visakhapatnam, India</div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="https://Sud0u53r.github.io/about/"> About Me</a></div><br /></div>
   </div>
 </section>
   <section class="featured-posts row card component">
     <div class="card-body">
       <h2 class="card-title">Featured Posts</h2>
-      <ul><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
-</a></li><li><a href="https://Sud0u53r.github.io/posts/kernelctf2021/">KernelCTF 2021 Writeups
+      <ul><li><a href="https://Sud0u53r.github.io/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
 </a></li></ul>
     </div>
   </section><section class="recent-posts row card component">
   <div class="card-body">
     <h2 class="card-title">Recent Posts</h2>
-    <ul><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
+    <ul><li><a href="https://Sud0u53r.github.io/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
+</a></li><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
 </a></li><li><a href="https://Sud0u53r.github.io/posts/kernelctf2021/">KernelCTF 2021 Writeups
 </a></li><li><a href="https://Sud0u53r.github.io/posts/tokyowesternsctf2020/">TokyoWesterns CTF 2020 Writeup [Urlcheck V1&amp;V2]
 </a></li><li><a href="https://Sud0u53r.github.io/posts/allesctf2020/">AllesCTF 2020 Writeup [Only Freights]
-</a></li><li><a href="https://Sud0u53r.github.io/posts/gynvael-coldwind-twitter-challenges/">Gynvael Coldwind Twitter Challenges
 </a></li></ul>
   </div>
 </section><section class="taxonomies row card component">
@@ -496,8 +497,14 @@
             ctfs
           </a><a href="https://Sud0u53r.github.io/tags/web/" class="badge bg-primary text-white rounded post-taxonomy" title="web">
             web
+          </a><a href="https://Sud0u53r.github.io/tags/blockchain/" class="badge bg-primary text-white rounded post-taxonomy" title="blockchain">
+            blockchain
           </a><a href="https://Sud0u53r.github.io/tags/challenge/" class="badge bg-primary text-white rounded post-taxonomy" title="challenge">
             challenge
+          </a><a href="https://Sud0u53r.github.io/tags/ethereum/" class="badge bg-primary text-white rounded post-taxonomy" title="ethereum">
+            ethereum
+          </a><a href="https://Sud0u53r.github.io/tags/evm/" class="badge bg-primary text-white rounded post-taxonomy" title="evm">
+            evm
           </a><a href="https://Sud0u53r.github.io/tags/misc/" class="badge bg-primary text-white rounded post-taxonomy" title="misc">
             misc
           </a><a href="https://Sud0u53r.github.io/tags/twitter/" class="badge bg-primary text-white rounded post-taxonomy" title="twitter">
@@ -519,10 +526,10 @@
         <i class="fa-fw fa-2x fab fa-twitter"></i>
       </a></nav>
 <div class="copyright mb-2">
-  Copyright © 2018-2022 Akash Gurugunti. All Rights Reserved.
+  Copyright © 2018-2023 Akash Gurugunti. All Rights Reserved.
 </div>
 </footer>
-<script src="https://Sud0u53r.github.io/js/bundle.min.7bc8e502a64250aecf4fc34b32376b235f1ccfd00b5d1d7c8b4c587fd695735c.js" integrity="sha256-e8jlAqZCUK7PT8NLMjdrI18cz9ALXR18i0xYf9aVc1w=" crossorigin="anonymous" defer></script><script defer src="https://Sud0u53r.github.io/js/viewer.min.8009d731f8f286eba7810e149f470a6d38d8e496d51395b90ca7f2d0431e5516.js" integrity="sha256-gAnXMfjyhuungQ4Un0cKbTjY5JbVE5W5DKfy0EMeVRY=" crossorigin="anonymous"></script><script defer src="https://Sud0u53r.github.io/js/katex.min.9f106aeac559dd4631d9ae0297c064cc4faf49bcdab9d75eb03f573f0ea90a66.js" integrity="sha256-nxBq6sVZ3UYx2a4Cl8BkzE&#43;vSbzauddesD9XPw6pCmY=" crossorigin="anonymous"></script>
+<script src="https://Sud0u53r.github.io/js/bundle.min.dfff1fab09c570894e719d1447ee731c8bb5a1e57e18d45beff274823da322f0.js" integrity="sha256-3/8fqwnFcIlOcZ0UR&#43;5zHIu1oeV&#43;GNRb7/J0gj2jIvA=" crossorigin="anonymous" defer></script><script defer src="https://Sud0u53r.github.io/js/viewer.min.2b366f6cb186c9ce6e41936589e36005bc87d36452602e9aea75f196009e8b95.js" integrity="sha256-KzZvbLGGyc5uQZNlieNgBbyH02RSYC6a6nXxlgCei5U=" crossorigin="anonymous"></script><script defer src="https://Sud0u53r.github.io/js/katex.min.affcdb0c3de1260e0074ae86bffee9280f85eb73debefdce021e5d030c262a17.js" integrity="sha256-r/zbDD3hJg4AdK6Gv/7pKA&#43;F63Pevv3OAh5dAwwmKhc=" crossorigin="anonymous"></script>
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

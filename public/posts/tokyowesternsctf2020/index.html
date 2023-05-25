@@ -27,15 +27,15 @@
 <meta name="twitter:title" content="TokyoWesterns CTF 2020 Writeup [urlcheck V1&amp;V2]"/>
 <meta name="twitter:description" content="TokyoWesterns CTF -&gt; Urlcheck v1 &amp; v2 writeup"/>
 <meta name="twitter:site" content="@Sud0u53r"/>
-<link rel="preload" href="https://Sud0u53r.github.io/css/bundle.min.63b7b82d478e522a90ea9bdc402b2adc8c8a6628aa4c169b00c47271e3562766.css" integrity="sha256-Y7e4LUeOUiqQ6pvcQCsq3IyKZiiqTBabAMRyceNWJ2Y=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://Sud0u53r.github.io/css/bundle.min.63b7b82d478e522a90ea9bdc402b2adc8c8a6628aa4c169b00c47271e3562766.css" integrity="sha256-Y7e4LUeOUiqQ6pvcQCsq3IyKZiiqTBabAMRyceNWJ2Y=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
+<link rel="preload" href="https://Sud0u53r.github.io/css/bundle.min.fcd024e77e7ca8dc30926e1b5389582b45bdb44482ee20d1ae3aae2c00de9817.css" integrity="sha256-/NAk5358qNwwkm4bU4lYK0W9tESC7iDRrjquLADemBc=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://Sud0u53r.github.io/css/bundle.min.fcd024e77e7ca8dc30926e1b5389582b45bdb44482ee20d1ae3aae2c00de9817.css" integrity="sha256-/NAk5358qNwwkm4bU4lYK0W9tESC7iDRrjquLADemBc=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code" type="text/css" media="all" />
 <style>
  body { font-family: 'Consolas'; }
  code { font-family: 'Fira Code'; }
  code { tab-size: 4; }
 </style></head>
-  <body><script src="https://Sud0u53r.github.io/js/bootstrap.min.2ab67bcb0cdc2c285903b975092b17ec5977f2b2c3db9e2c397bb165a914cccf.js" integrity="sha256-KrZ7ywzcLChZA7l1CSsX7Fl38rLD254sOXuxZakUzM8=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
+  <body><script src="https://Sud0u53r.github.io/js/bootstrap.min.062c2e66b557cb779d59cedff7e0cc76e84beb665a1076e474e87d940be44245.js" integrity="sha256-BiwuZrVXy3edWc7f9&#43;DMduhL62ZaEHbkdOh9lAvkQkU=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
   <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,19 +136,19 @@
     <div class="collapse navbar-collapse" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContent">
       
       <ul class="navbar-nav ms-auto"><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/archives">
+          <a class="nav-link" href="https://Sud0u53r.github.io/archives/">
             <i class="fas fa-fw fa-file-archive"></i>Archives
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/categories">
+          <a class="nav-link" href="https://Sud0u53r.github.io/categories/">
             <i class="fas fa-fw fa-folder"></i>Categories
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/tags">
+          <a class="nav-link" href="https://Sud0u53r.github.io/tags/">
             <i class="fas fa-fw fa-tags"></i>Tags
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/series">
+          <a class="nav-link" href="https://Sud0u53r.github.io/series/">
             <i class="fas fa-fw fa-columns"></i>Series
           </a>
         </li></ul>
@@ -213,97 +213,97 @@ I solved only 2 web challenges &ndash; Urlcheck v1 and Urlcheck v2. Should try h
 <h2 id="urlcheck-v1">Urlcheck v1</h2>
 <p>Given <a href="files/server1.py">server.py</a>
 </p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">flask</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">urlparse</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="n">app</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;***CENSORED***&#39;</span>
-<span class="n">app</span><span class="o">.</span><span class="n">re_ip</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\A(\d+)\.(\d+)\.(\d+)\.(\d+)\Z&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">valid_ip</span><span class="p">(</span><span class="n">ip</span><span class="p">):</span>
-    <span class="n">matches</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">re_ip</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
-	<span class="k">if</span> <span class="n">matches</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-		<span class="k">return</span> <span class="kc">False</span>
-
-	<span class="n">ip</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">matches</span><span class="o">.</span><span class="n">groups</span><span class="p">()))</span>
-	<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">255</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ip</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-		<span class="k">return</span> <span class="kc">False</span>
-	<span class="c1"># Stay out of my private!</span>
-	<span class="k">if</span> <span class="n">ip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">127</span><span class="p">]</span> \
-		<span class="ow">or</span> <span class="p">(</span><span class="n">ip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">172</span> <span class="ow">and</span> <span class="p">(</span><span class="n">ip</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">15</span> <span class="ow">or</span> <span class="n">ip</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">))</span> \
-		<span class="ow">or</span> <span class="p">(</span><span class="n">ip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">169</span> <span class="ow">and</span> <span class="n">ip</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">254</span><span class="p">)</span> \
-		<span class="ow">or</span> <span class="p">(</span><span class="n">ip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">192</span> <span class="ow">and</span> <span class="n">ip</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">168</span><span class="p">):</span>
-		<span class="k">return</span> <span class="kc">False</span>
-	<span class="k">return</span> <span class="kc">True</span>
-
-<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">recursive_count</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-	<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-	<span class="k">if</span> <span class="s1">&#39;location&#39;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
-		<span class="k">if</span> <span class="n">recursive_count</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-			<span class="k">return</span> <span class="s1">&#39;&amp;#x1f914;&#39;</span>
-		<span class="n">url</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
-		<span class="k">if</span> <span class="n">valid_ip</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-			<span class="k">return</span> <span class="s1">&#39;&amp;#x1f914;&#39;</span>
-		<span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">recursive_count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> 
-	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/admin-status&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">admin_status</span><span class="p">():</span>
-	<span class="k">if</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span> <span class="o">!=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">:</span>
-		<span class="k">return</span> <span class="s1">&#39;&amp;#x1f97a;&#39;</span>
-	<span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">flag</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/check-status&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">check_status</span><span class="p">():</span>
-	<span class="n">url</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-	<span class="k">if</span> <span class="n">valid_ip</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-		<span class="k">return</span> <span class="s1">&#39;&amp;#x1f97a;&#39;</span>
-	<span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-	<span class="k">return</span> <span class="s1">&#39;&#39;&#39;
-</span><span class="s1">&lt;!DOCTYPE html&gt;
-</span><span class="s1">&lt;html&gt;
-</span><span class="s1">&lt;head&gt;
-</span><span class="s1">  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css&#34;&gt;
-</span><span class="s1">  &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vue&#34;&gt;&lt;/script&gt;
-</span><span class="s1">&lt;/head&gt;
-</span><span class="s1">&lt;body&gt;
-</span><span class="s1">	&lt;div id=&#34;app&#34; class=&#34;container&#34;&gt;
-</span><span class="s1">	  &lt;h1&gt;urlcheck v1&lt;/h1&gt;
-</span><span class="s1">	  &lt;div class=&#34;input-group input-group-lg mb-3&#34;&gt;
-</span><span class="s1">		&lt;input v-model=&#34;url&#34; placeholder=&#34;e.g.) http://11.45.148.93/&#34; class=&#34;form-control&#34;&gt;
-</span><span class="s1">		&lt;div class=&#34;input-group-append&#34;&gt;
-</span><span class="s1">		  &lt;button v-on:click=&#34;checkStatus&#34; class=&#34;btn btn-primary&#34;&gt;check&lt;/button&gt;
-</span><span class="s1">		&lt;/div&gt;
-</span><span class="s1">	  &lt;/div&gt;
-</span><span class="s1">	  &lt;div v-if=&#34;status&#34; class=&#34;alert alert-info&#34;&gt;{{ d(status) }}&lt;/div&gt;
-</span><span class="s1">	&lt;/div&gt;
-</span><span class="s1">	&lt;script&gt;
-</span><span class="s1">	  new Vue({
-</span><span class="s1">		el: &#39;#app&#39;,
-</span><span class="s1">		data: {url: &#39;&#39;, status: &#39;&#39;},
-</span><span class="s1">		methods: {
-</span><span class="s1">		  d: function (s) {
-</span><span class="s1">			let t = document.createElement(&#39;textarea&#39;)
-</span><span class="s1">			t.innerHTML = s
-</span><span class="s1">			return t.value
-</span><span class="s1">		  },
-</span><span class="s1">		  checkStatus: function () {
-</span><span class="s1">			fetch(&#39;/check-status?url=&#39; + this.url)
-</span><span class="s1">			  .then((r) =&gt; r.text())
-</span><span class="s1">			  .then((r) =&gt; {
-</span><span class="s1">				this.status = r
-</span><span class="s1">			  })
-</span><span class="s1">		  }
-</span><span class="s1">		}
-</span><span class="s1">	  })
-</span><span class="s1">	&lt;/script&gt;
-</span><span class="s1">&lt;/body&gt;
-</span><span class="s1">&lt;/html&gt;
-</span><span class="s1">&#39;&#39;&#39;</span>
-</code></pre></div><p>The challenge is to bypass the valid_ip() function check using octal notation of ips.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">flask</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;***CENSORED***&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">re_ip</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\A(\d+)\.(\d+)\.(\d+)\.(\d+)\Z&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">valid_ip</span><span class="p">(</span><span class="n">ip</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">matches</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">re_ip</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">matches</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">ip</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">matches</span><span class="o">.</span><span class="n">groups</span><span class="p">()))</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">255</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ip</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">	<span class="c1"># Stay out of my private!</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">ip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">127</span><span class="p">]</span> \
+</span></span><span class="line"><span class="cl">		<span class="ow">or</span> <span class="p">(</span><span class="n">ip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">172</span> <span class="ow">and</span> <span class="p">(</span><span class="n">ip</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">15</span> <span class="ow">or</span> <span class="n">ip</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">))</span> \
+</span></span><span class="line"><span class="cl">		<span class="ow">or</span> <span class="p">(</span><span class="n">ip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">169</span> <span class="ow">and</span> <span class="n">ip</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">254</span><span class="p">)</span> \
+</span></span><span class="line"><span class="cl">		<span class="ow">or</span> <span class="p">(</span><span class="n">ip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">192</span> <span class="ow">and</span> <span class="n">ip</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">168</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">recursive_count</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="s1">&#39;location&#39;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">recursive_count</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="s1">&#39;&amp;#x1f914;&#39;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">url</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">valid_ip</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="s1">&#39;&amp;#x1f914;&#39;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">recursive_count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/admin-status&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">admin_status</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span> <span class="o">!=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="s1">&#39;&amp;#x1f97a;&#39;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">flag</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/check-status&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">check_status</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="n">url</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">valid_ip</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="s1">&#39;&amp;#x1f97a;&#39;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;!DOCTYPE html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vue&#34;&gt;&lt;/script&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	&lt;div id=&#34;app&#34; class=&#34;container&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  &lt;h1&gt;urlcheck v1&lt;/h1&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  &lt;div class=&#34;input-group input-group-lg mb-3&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">		&lt;input v-model=&#34;url&#34; placeholder=&#34;e.g.) http://11.45.148.93/&#34; class=&#34;form-control&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">		&lt;div class=&#34;input-group-append&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  &lt;button v-on:click=&#34;checkStatus&#34; class=&#34;btn btn-primary&#34;&gt;check&lt;/button&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">		&lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  &lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  &lt;div v-if=&#34;status&#34; class=&#34;alert alert-info&#34;&gt;{{ d(status) }}&lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	&lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	&lt;script&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  new Vue({
+</span></span></span><span class="line"><span class="cl"><span class="s1">		el: &#39;#app&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">		data: {url: &#39;&#39;, status: &#39;&#39;},
+</span></span></span><span class="line"><span class="cl"><span class="s1">		methods: {
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  d: function (s) {
+</span></span></span><span class="line"><span class="cl"><span class="s1">			let t = document.createElement(&#39;textarea&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="s1">			t.innerHTML = s
+</span></span></span><span class="line"><span class="cl"><span class="s1">			return t.value
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  },
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  checkStatus: function () {
+</span></span></span><span class="line"><span class="cl"><span class="s1">			fetch(&#39;/check-status?url=&#39; + this.url)
+</span></span></span><span class="line"><span class="cl"><span class="s1">			  .then((r) =&gt; r.text())
+</span></span></span><span class="line"><span class="cl"><span class="s1">			  .then((r) =&gt; {
+</span></span></span><span class="line"><span class="cl"><span class="s1">				this.status = r
+</span></span></span><span class="line"><span class="cl"><span class="s1">			  })
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  }
+</span></span></span><span class="line"><span class="cl"><span class="s1">		}
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  })
+</span></span></span><span class="line"><span class="cl"><span class="s1">	&lt;/script&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;</span>
+</span></span></code></pre></div><p>The challenge is to bypass the valid_ip() function check using octal notation of ips.</p>
 <blockquote>
 <p><strong>Solution</strong></p>
 <ol>
@@ -320,92 +320,92 @@ I solved only 2 web challenges &ndash; Urlcheck v1 and Urlcheck v2. Should try h
 <h2 id="urlcheck-v2">Urlcheck v2</h2>
 <p>Given <a href="files/server2.py">server.py</a>
 </p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">ipaddress</span><span class="o">,</span> <span class="nn">socket</span><span class="o">,</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">flask</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="k">import</span> <span class="n">urlparse</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="n">app</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;***CENSORED***&#39;</span>
-
-<span class="k">def</span> <span class="nf">valid_ip</span><span class="p">(</span><span class="n">ip</span><span class="p">):</span>
-	<span class="k">try</span><span class="p">:</span>
-		<span class="n">result</span> <span class="o">=</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
-		<span class="c1"># Stay out of my private!</span>
-		<span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">is_global</span>
-	<span class="k">except</span><span class="p">:</span>
-		<span class="k">return</span> <span class="kc">False</span>
-
-<span class="k">def</span> <span class="nf">valid_fqdn</span><span class="p">(</span><span class="n">fqdn</span><span class="p">):</span>
-	<span class="k">return</span> <span class="n">valid_ip</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="n">fqdn</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">recursive_count</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-	<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-	<span class="k">if</span> <span class="s1">&#39;location&#39;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
-		<span class="k">if</span> <span class="n">recursive_count</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-			<span class="k">return</span> <span class="s1">&#39;&amp;#x1f914;&#39;</span>
-		<span class="n">url</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
-		<span class="k">if</span> <span class="n">valid_fqdn</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-			<span class="k">return</span> <span class="s1">&#39;&amp;#x1f914;&#39;</span>
-		<span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">recursive_count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/admin-status&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">admin_status</span><span class="p">():</span>
-	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Remote Address:&#39;</span><span class="p">,</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span><span class="p">)</span>
-	<span class="k">if</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span> <span class="o">!=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">:</span>
-		<span class="k">return</span> <span class="s1">&#39;&amp;#x1f97a;&#39;</span>
-	<span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">flag</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/check-status&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">check_status</span><span class="p">():</span>
-	<span class="n">url</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-	<span class="k">if</span> <span class="n">valid_fqdn</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-		<span class="k">return</span> <span class="s1">&#39;&amp;#x1f97a;&#39;</span>
-	<span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-	<span class="k">return</span> <span class="s1">&#39;&#39;&#39;
-</span><span class="s1">&lt;!DOCTYPE html&gt;
-</span><span class="s1">&lt;html&gt;
-</span><span class="s1">&lt;head&gt;
-</span><span class="s1">  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css&#34;&gt;
-</span><span class="s1">  &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vue&#34;&gt;&lt;/script&gt;
-</span><span class="s1">&lt;/head&gt;
-</span><span class="s1">&lt;body&gt;
-</span><span class="s1">	&lt;div id=&#34;app&#34; class=&#34;container&#34;&gt;
-</span><span class="s1">	  &lt;h1&gt;urlcheck v2&lt;/h1&gt;
-</span><span class="s1">	  &lt;div class=&#34;input-group input-group-lg mb-3&#34;&gt;
-</span><span class="s1">		&lt;input v-model=&#34;url&#34; placeholder=&#34;e.g.) http://westerns.tokyo/&#34; class=&#34;form-control&#34;&gt;
-</span><span class="s1">		&lt;div class=&#34;input-group-append&#34;&gt;
-</span><span class="s1">		  &lt;button v-on:click=&#34;checkStatus&#34; class=&#34;btn btn-primary&#34;&gt;check&lt;/button&gt;
-</span><span class="s1">		&lt;/div&gt;
-</span><span class="s1">	  &lt;/div&gt;
-</span><span class="s1">	  &lt;div v-if=&#34;status&#34; class=&#34;alert alert-info&#34;&gt;{{ d(status) }}&lt;/div&gt;
-</span><span class="s1">	&lt;/div&gt;
-</span><span class="s1">	&lt;script&gt;
-</span><span class="s1">	  new Vue({
-</span><span class="s1">		el: &#39;#app&#39;,
-</span><span class="s1">		data: {url: &#39;&#39;, status: &#39;&#39;},
-</span><span class="s1">		methods: {
-</span><span class="s1">		  d: function (s) {
-</span><span class="s1">			let t = document.createElement(&#39;textarea&#39;)
-</span><span class="s1">			t.innerHTML = s
-</span><span class="s1">			return t.value
-</span><span class="s1">		  },
-</span><span class="s1">		  checkStatus: function () {
-</span><span class="s1">			fetch(&#39;/check-status?url=&#39; + this.url)
-</span><span class="s1">			  .then((r) =&gt; r.text())
-</span><span class="s1">			  .then((r) =&gt; {
-</span><span class="s1">				this.status = r
-</span><span class="s1">			  })
-</span><span class="s1">		  }
-</span><span class="s1">		}
-</span><span class="s1">	  })
-</span><span class="s1">	&lt;/script&gt;
-</span><span class="s1">&lt;/body&gt;
-</span><span class="s1">&lt;/html&gt;
-</span><span class="s1">&#39;&#39;&#39;</span>
-</code></pre></div><p>The challenge is to bypass the valid_fqdn() function check using DNS rebinding attack.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">ipaddress</span><span class="o">,</span> <span class="nn">socket</span><span class="o">,</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">flask</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="s1">&#39;***CENSORED***&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">valid_ip</span><span class="p">(</span><span class="n">ip</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">result</span> <span class="o">=</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="c1"># Stay out of my private!</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">is_global</span>
+</span></span><span class="line"><span class="cl">	<span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">valid_fqdn</span><span class="p">(</span><span class="n">fqdn</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">valid_ip</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="n">fqdn</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">recursive_count</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="s1">&#39;location&#39;</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">recursive_count</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="s1">&#39;&amp;#x1f914;&#39;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">url</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">valid_fqdn</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="s1">&#39;&amp;#x1f914;&#39;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">recursive_count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/admin-status&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">admin_status</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Remote Address:&#39;</span><span class="p">,</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">remote_addr</span> <span class="o">!=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="s1">&#39;&amp;#x1f97a;&#39;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">flag</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/check-status&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">check_status</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="n">url</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">valid_fqdn</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="s1">&#39;&amp;#x1f97a;&#39;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="s1">&#39;&#39;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;!DOCTYPE html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">  &lt;script src=&#34;https://cdn.jsdelivr.net/npm/vue&#34;&gt;&lt;/script&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	&lt;div id=&#34;app&#34; class=&#34;container&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  &lt;h1&gt;urlcheck v2&lt;/h1&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  &lt;div class=&#34;input-group input-group-lg mb-3&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">		&lt;input v-model=&#34;url&#34; placeholder=&#34;e.g.) http://westerns.tokyo/&#34; class=&#34;form-control&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">		&lt;div class=&#34;input-group-append&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  &lt;button v-on:click=&#34;checkStatus&#34; class=&#34;btn btn-primary&#34;&gt;check&lt;/button&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">		&lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  &lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  &lt;div v-if=&#34;status&#34; class=&#34;alert alert-info&#34;&gt;{{ d(status) }}&lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	&lt;/div&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	&lt;script&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  new Vue({
+</span></span></span><span class="line"><span class="cl"><span class="s1">		el: &#39;#app&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">		data: {url: &#39;&#39;, status: &#39;&#39;},
+</span></span></span><span class="line"><span class="cl"><span class="s1">		methods: {
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  d: function (s) {
+</span></span></span><span class="line"><span class="cl"><span class="s1">			let t = document.createElement(&#39;textarea&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="s1">			t.innerHTML = s
+</span></span></span><span class="line"><span class="cl"><span class="s1">			return t.value
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  },
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  checkStatus: function () {
+</span></span></span><span class="line"><span class="cl"><span class="s1">			fetch(&#39;/check-status?url=&#39; + this.url)
+</span></span></span><span class="line"><span class="cl"><span class="s1">			  .then((r) =&gt; r.text())
+</span></span></span><span class="line"><span class="cl"><span class="s1">			  .then((r) =&gt; {
+</span></span></span><span class="line"><span class="cl"><span class="s1">				this.status = r
+</span></span></span><span class="line"><span class="cl"><span class="s1">			  })
+</span></span></span><span class="line"><span class="cl"><span class="s1">		  }
+</span></span></span><span class="line"><span class="cl"><span class="s1">		}
+</span></span></span><span class="line"><span class="cl"><span class="s1">	  })
+</span></span></span><span class="line"><span class="cl"><span class="s1">	&lt;/script&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&lt;/html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="s1">&#39;&#39;&#39;</span>
+</span></span></code></pre></div><p>The challenge is to bypass the valid_fqdn() function check using DNS rebinding attack.</p>
 <blockquote>
 <p><strong>Solution</strong></p>
 <ol>
@@ -447,24 +447,23 @@ I solved only 2 web challenges &ndash; Urlcheck v1 and Urlcheck v2. Should try h
   
    />
 </div>
-    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Backend Developement &amp; Cyber Security</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> Job Hunting</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> Visakhapatnam, India</div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="https://Sud0u53r.github.io/about/"> About Me</a></div><br /></div>
+    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Cyber Security, Blockchain</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> OtterSec LLC</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> Visakhapatnam, India</div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="https://Sud0u53r.github.io/about/"> About Me</a></div><br /></div>
   </div>
 </section>
   <section class="featured-posts row card component">
     <div class="card-body">
       <h2 class="card-title">Featured Posts</h2>
-      <ul><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
-</a></li><li><a href="https://Sud0u53r.github.io/posts/kernelctf2021/">KernelCTF 2021 Writeups
+      <ul><li><a href="https://Sud0u53r.github.io/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
 </a></li></ul>
     </div>
   </section><section class="recent-posts row card component">
   <div class="card-body">
     <h2 class="card-title">Recent Posts</h2>
-    <ul><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
+    <ul><li><a href="https://Sud0u53r.github.io/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
+</a></li><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
 </a></li><li><a href="https://Sud0u53r.github.io/posts/kernelctf2021/">KernelCTF 2021 Writeups
 </a></li><li><a href="https://Sud0u53r.github.io/posts/tokyowesternsctf2020/">TokyoWesterns CTF 2020 Writeup [Urlcheck V1&amp;V2]
 </a></li><li><a href="https://Sud0u53r.github.io/posts/allesctf2020/">AllesCTF 2020 Writeup [Only Freights]
-</a></li><li><a href="https://Sud0u53r.github.io/posts/gynvael-coldwind-twitter-challenges/">Gynvael Coldwind Twitter Challenges
 </a></li></ul>
   </div>
 </section><section class="taxonomies row card component">
@@ -489,8 +488,14 @@ I solved only 2 web challenges &ndash; Urlcheck v1 and Urlcheck v2. Should try h
             ctfs
           </a><a href="https://Sud0u53r.github.io/tags/web/" class="badge bg-primary text-white rounded post-taxonomy" title="web">
             web
+          </a><a href="https://Sud0u53r.github.io/tags/blockchain/" class="badge bg-primary text-white rounded post-taxonomy" title="blockchain">
+            blockchain
           </a><a href="https://Sud0u53r.github.io/tags/challenge/" class="badge bg-primary text-white rounded post-taxonomy" title="challenge">
             challenge
+          </a><a href="https://Sud0u53r.github.io/tags/ethereum/" class="badge bg-primary text-white rounded post-taxonomy" title="ethereum">
+            ethereum
+          </a><a href="https://Sud0u53r.github.io/tags/evm/" class="badge bg-primary text-white rounded post-taxonomy" title="evm">
+            evm
           </a><a href="https://Sud0u53r.github.io/tags/misc/" class="badge bg-primary text-white rounded post-taxonomy" title="misc">
             misc
           </a><a href="https://Sud0u53r.github.io/tags/twitter/" class="badge bg-primary text-white rounded post-taxonomy" title="twitter">
@@ -512,10 +517,10 @@ I solved only 2 web challenges &ndash; Urlcheck v1 and Urlcheck v2. Should try h
         <i class="fa-fw fa-2x fab fa-twitter"></i>
       </a></nav>
 <div class="copyright mb-2">
-  Copyright © 2018-2022 Akash Gurugunti. All Rights Reserved.
+  Copyright © 2018-2023 Akash Gurugunti. All Rights Reserved.
 </div>
 </footer>
-<script src="https://Sud0u53r.github.io/js/bundle.min.7bc8e502a64250aecf4fc34b32376b235f1ccfd00b5d1d7c8b4c587fd695735c.js" integrity="sha256-e8jlAqZCUK7PT8NLMjdrI18cz9ALXR18i0xYf9aVc1w=" crossorigin="anonymous" defer></script><script defer src="https://Sud0u53r.github.io/js/viewer.min.8009d731f8f286eba7810e149f470a6d38d8e496d51395b90ca7f2d0431e5516.js" integrity="sha256-gAnXMfjyhuungQ4Un0cKbTjY5JbVE5W5DKfy0EMeVRY=" crossorigin="anonymous"></script><script defer src="https://Sud0u53r.github.io/js/katex.min.9f106aeac559dd4631d9ae0297c064cc4faf49bcdab9d75eb03f573f0ea90a66.js" integrity="sha256-nxBq6sVZ3UYx2a4Cl8BkzE&#43;vSbzauddesD9XPw6pCmY=" crossorigin="anonymous"></script>
+<script src="https://Sud0u53r.github.io/js/bundle.min.dfff1fab09c570894e719d1447ee731c8bb5a1e57e18d45beff274823da322f0.js" integrity="sha256-3/8fqwnFcIlOcZ0UR&#43;5zHIu1oeV&#43;GNRb7/J0gj2jIvA=" crossorigin="anonymous" defer></script><script defer src="https://Sud0u53r.github.io/js/viewer.min.2b366f6cb186c9ce6e41936589e36005bc87d36452602e9aea75f196009e8b95.js" integrity="sha256-KzZvbLGGyc5uQZNlieNgBbyH02RSYC6a6nXxlgCei5U=" crossorigin="anonymous"></script><script defer src="https://Sud0u53r.github.io/js/katex.min.affcdb0c3de1260e0074ae86bffee9280f85eb73debefdce021e5d030c262a17.js" integrity="sha256-r/zbDD3hJg4AdK6Gv/7pKA&#43;F63Pevv3OAh5dAwwmKhc=" crossorigin="anonymous"></script>
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

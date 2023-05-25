@@ -27,15 +27,15 @@
 <meta name="twitter:title" content="KernelCTF 2021 Writeups"/>
 <meta name="twitter:description" content="KernelCTF 2021 Writeups for Progressive Dynamite, Bogo Solve &amp; Bogo Attack (unintended solutions)"/>
 <meta name="twitter:site" content="@Sud0u53r"/>
-<link rel="preload" href="https://Sud0u53r.github.io/css/bundle.min.63b7b82d478e522a90ea9bdc402b2adc8c8a6628aa4c169b00c47271e3562766.css" integrity="sha256-Y7e4LUeOUiqQ6pvcQCsq3IyKZiiqTBabAMRyceNWJ2Y=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://Sud0u53r.github.io/css/bundle.min.63b7b82d478e522a90ea9bdc402b2adc8c8a6628aa4c169b00c47271e3562766.css" integrity="sha256-Y7e4LUeOUiqQ6pvcQCsq3IyKZiiqTBabAMRyceNWJ2Y=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
+<link rel="preload" href="https://Sud0u53r.github.io/css/bundle.min.fcd024e77e7ca8dc30926e1b5389582b45bdb44482ee20d1ae3aae2c00de9817.css" integrity="sha256-/NAk5358qNwwkm4bU4lYK0W9tESC7iDRrjquLADemBc=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://Sud0u53r.github.io/css/bundle.min.fcd024e77e7ca8dc30926e1b5389582b45bdb44482ee20d1ae3aae2c00de9817.css" integrity="sha256-/NAk5358qNwwkm4bU4lYK0W9tESC7iDRrjquLADemBc=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code" type="text/css" media="all" />
 <style>
  body { font-family: 'Consolas'; }
  code { font-family: 'Fira Code'; }
  code { tab-size: 4; }
 </style></head>
-  <body><script src="https://Sud0u53r.github.io/js/bootstrap.min.2ab67bcb0cdc2c285903b975092b17ec5977f2b2c3db9e2c397bb165a914cccf.js" integrity="sha256-KrZ7ywzcLChZA7l1CSsX7Fl38rLD254sOXuxZakUzM8=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
+  <body><script src="https://Sud0u53r.github.io/js/bootstrap.min.062c2e66b557cb779d59cedff7e0cc76e84beb665a1076e474e87d940be44245.js" integrity="sha256-BiwuZrVXy3edWc7f9&#43;DMduhL62ZaEHbkdOh9lAvkQkU=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
   <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,19 +136,19 @@
     <div class="collapse navbar-collapse" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContent">
       
       <ul class="navbar-nav ms-auto"><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/archives">
+          <a class="nav-link" href="https://Sud0u53r.github.io/archives/">
             <i class="fas fa-fw fa-file-archive"></i>Archives
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/categories">
+          <a class="nav-link" href="https://Sud0u53r.github.io/categories/">
             <i class="fas fa-fw fa-folder"></i>Categories
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/tags">
+          <a class="nav-link" href="https://Sud0u53r.github.io/tags/">
             <i class="fas fa-fw fa-tags"></i>Tags
           </a>
         </li><li class="nav-item">
-          <a class="nav-link" href="https://Sud0u53r.github.io/series">
+          <a class="nav-link" href="https://Sud0u53r.github.io/series/">
             <i class="fas fa-fw fa-columns"></i>Series
           </a>
         </li></ul>
@@ -224,25 +224,25 @@ I solved 3 Misc challenges &ndash; Progressive Dynamite, Bogo Solve &amp; Bogo A
 <p>    For people who are good at competitive coding, this challenge will be a piece of cake. Luckily, I have some experience with algorithm techniques like divide and conquer, dynamic programming, etc., and I have used dynamic programming approach to solve this problem.</p>
 <p>Solution: <a href="files/progressive_dynamite/solve.py">progressive_dynamite_solve.py</a>
 </p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="k">import</span> <span class="n">long_to_bytes</span> <span class="c1"># pip3 install pycrypto</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;challenge.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">l</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-
-<span class="n">dp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([</span><span class="nb">list</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)])</span>
-
-<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
-	<span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
-	<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-		<span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">:])</span>
-	<span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-		<span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
-	<span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">solve</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">solve</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-	<span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">-=</span> <span class="mi">38396724472483865997960720090198028896</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Flag:&#39;</span><span class="p">,</span> <span class="n">long_to_bytes</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-</code></pre></div><p>    Here, the total no.of possibilities that have to be checked to solve this problem is,
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="n">long_to_bytes</span> <span class="c1"># pip3 install pycrypto</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;challenge.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">l</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([</span><span class="nb">list</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">:])</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+</span></span><span class="line"><span class="cl">	<span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">solve</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">solve</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">-=</span> <span class="mi">38396724472483865997960720090198028896</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Flag:&#39;</span><span class="p">,</span> <span class="n">long_to_bytes</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+</span></span></code></pre></div><p>    Here, the total no.of possibilities that have to be checked to solve this problem is,
 $$
 \dfrac{(99 + 99)!}{99! * 99!} = 2.275 * 10^{58}
 $$</p>
@@ -259,36 +259,36 @@ $$</p>
 </p>
 <p>    We were given a netcat connection and a python program which is running behind that netcat connection. The given <a href="files/bogo_solve/main.py">main.py</a>
  is,</p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">random</span>
-<span class="n">NUMS</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">NUMS</span><span class="p">)</span>
-<span class="n">tries</span> <span class="o">=</span> <span class="mi">15</span> <span class="c1"># Basically useless, not decremented anywhere!!!</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter (1) to steal and (2) to guess: &#39;</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">tries</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># Unreachable condition</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You ran out of tries. Bye!&#39;</span><span class="p">)</span>
-                <span class="k">break</span>
-            <span class="n">l</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter numbers to steal: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
-            <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
-                <span class="k">assert</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">NUMS</span><span class="p">)</span>
-                <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NUMS</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stolen:&#39;</span><span class="p">,</span><span class="n">output</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is the list: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)))</span>
-            <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="n">NUMS</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;flag.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-                <span class="k">break</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NOPE&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not a choice.&#39;</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error. Nice Try...&#39;</span><span class="p">)</span>
-</code></pre></div><p>    So, what the program does is, it takes the list of numbers from 0 to 10,000 and shuffles them. After that, it takes input from the user, a list of space seperated indices, and if the indices are valid (exists b/w 0 and 10**4), the numbers at those indices are shuffled and returned to the user. We have to guess the correct order of 10**4 numbers and send it to server to get the flag.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="n">NUMS</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">NUMS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">tries</span> <span class="o">=</span> <span class="mi">15</span> <span class="c1"># Basically useless, not decremented anywhere!!!</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter (1) to steal and (2) to guess: &#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">tries</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># Unreachable condition</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You ran out of tries. Bye!&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span>
+</span></span><span class="line"><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter numbers to steal: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">assert</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">NUMS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NUMS</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stolen:&#39;</span><span class="p">,</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is the list: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="n">NUMS</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;flag.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NOPE&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not a choice.&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error. Nice Try...&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>    So, what the program does is, it takes the list of numbers from 0 to 10,000 and shuffles them. After that, it takes input from the user, a list of space seperated indices, and if the indices are valid (exists b/w 0 and 10**4), the numbers at those indices are shuffled and returned to the user. We have to guess the correct order of 10**4 numbers and send it to server to get the flag.</p>
 <p>    The problem here is, the 2nd shuffle before giving the numbers. Since the numbers are shuffled before returing to the user, if we take more than one index at a time, we won&rsquo;t be able to recognise the original index of a number. With this in mind, we can try to get all the numbers one by one, by sending one index at a time, from 0 to 10,000. I quickly wrote the script for that, and it didn&rsquo;t work! It kept stopping after 140-150 iterations. Apparently, the server has certain limit for no.of requests or certain time to keep the connection open.</p>
 <p>    So, we have to find some other way to get all the numbers with significantly less no.of requests. The next day, after staring at the code for an hour, I got an idea. The idea is,</p>
 <blockquote>
@@ -300,38 +300,38 @@ $$</p>
 </blockquote>
 <p>Solution: <a href="files/bogo_solve/solve.py">bogo_solve.py</a>
 </p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">from</span> <span class="nn">pwn</span> <span class="k">import</span> <span class="o">*</span>
-
-<span class="n">conn</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s1">&#39;ctf.k3rn3l4rmy.com&#39;</span><span class="p">,</span> <span class="s1">&#39;2237&#39;</span><span class="p">)</span>
-<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="k">def</span> <span class="nf">get_flag</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
-	<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
-	<span class="n">conn</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;: &#39;</span><span class="p">)</span>
-	<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
-	<span class="nb">print</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;}&#39;</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">get_num</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">indexes</span><span class="p">):</span>
-	<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
-	<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">indexes</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-	<span class="n">p</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">70</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-	<span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">solve</span><span class="p">():</span>
-	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-		<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span> 
-			<span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">100</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>
-		<span class="n">ll</span> <span class="o">=</span> <span class="n">get_num</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-		<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-		<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">ll</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span> <span class="o">=</span> <span class="n">x</span>
-		<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
-			<span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">100</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
-		<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
-
-<span class="n">solve</span><span class="p">()</span>
-<span class="n">get_flag</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
-</code></pre></div><p>ps: This isn&rsquo;t the intended solution. You can find the intended solution <a href="#intended-solution">here</a>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">conn</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s1">&#39;ctf.k3rn3l4rmy.com&#39;</span><span class="p">,</span> <span class="s1">&#39;2237&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_flag</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">conn</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;: &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;}&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_num</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">indexes</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">conn</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">indexes</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">	<span class="n">p</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">70</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solve</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span> 
+</span></span><span class="line"><span class="cl">			<span class="n">s</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mi">100</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ll</span> <span class="o">=</span> <span class="n">get_num</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">		<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">ll</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span> <span class="o">=</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">100</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">solve</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">get_flag</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+</span></span></code></pre></div><p>ps: This isn&rsquo;t the intended solution. You can find the intended solution <a href="#intended-solution">here</a>
 </p>
 <p>Flag: <code>flag{alg0r1thms_ar3_s0_c00l!}</code></p>
 <hr>
@@ -341,38 +341,38 @@ $$</p>
    />
 
 </p>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="kn">import</span> <span class="nn">random</span>
-<span class="n">NUMS</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">NUMS</span><span class="p">)</span>
-<span class="n">tries</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter (1) to steal and (2) to guess: &#39;</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">tries</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You ran out of tries. Bye!&#39;</span><span class="p">)</span>
-                <span class="k">break</span>
-            <span class="n">l</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter numbers to steal: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
-            <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
-                <span class="k">assert</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">NUMS</span><span class="p">)</span>
-                <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NUMS</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stolen:&#39;</span><span class="p">,</span><span class="n">output</span><span class="p">)</span>
-            <span class="n">tries</span><span class="o">-=</span><span class="mi">1</span> <span class="c1"># tries decremented, so we got only 15 tries</span>
-        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is the list: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)))</span>
-            <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="n">NUMS</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;flag.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-                <span class="k">break</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NOPE&#39;</span><span class="p">)</span>
-                <span class="k">break</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not a choice.&#39;</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error. Nice Try...&#39;</span><span class="p">)</span>
-</code></pre></div><p>It is same as the <a href="#2-bogo-solve-249500-56-solves">Bogo Solve</a>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py3" data-lang="py3"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="n">NUMS</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">NUMS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">tries</span> <span class="o">=</span> <span class="mi">15</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter (1) to steal and (2) to guess: &#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">tries</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You ran out of tries. Bye!&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span>
+</span></span><span class="line"><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter numbers to steal: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">assert</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">NUMS</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NUMS</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stolen:&#39;</span><span class="p">,</span><span class="n">output</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">tries</span><span class="o">-=</span><span class="mi">1</span> <span class="c1"># tries decremented, so we got only 15 tries</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;What is the list: &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="n">NUMS</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;flag.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NOPE&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not a choice.&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error. Nice Try...&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>It is same as the <a href="#2-bogo-solve-249500-56-solves">Bogo Solve</a>
  challenge, but the trails variable is decremented this time in <a href="files/bogo_attack/main.py">main.py</a>
 , so we have to do it in lesser no.of tries (15 tries only). So initially I tried to send &ldquo;0 1 1 2 2 2 &hellip; 1000 (1000 times)&rdquo;, but it failed because the data to be sent to the server for each request is over 1mb and pwntools or netcat is having problem with it and closing the connection. Stuck there for an hour or so.</p>
 <p>After some time, I got another idea.</p>
@@ -398,7 +398,7 @@ $$</p>
 <li>
 <p>Now, if we want a number at an index, say at index 10 (0b000000000001010), all we have to do is
 $$
-NUMS[10] = S0 \cap S1 \cap S2 \cap &hellip; \cap S11' \cap S12 \cap S13' \cap S14
+NUMS[10] = S0 \cap S1 \cap S2 \cap &hellip; \cap S11&rsquo; \cap S12 \cap S13&rsquo; \cap S14
 $$</p>
 </li>
 <li>
@@ -434,24 +434,23 @@ $$</p>
   
    />
 </div>
-    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Backend Developement &amp; Cyber Security</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> Job Hunting</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> Visakhapatnam, India</div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="https://Sud0u53r.github.io/about/"> About Me</a></div><br /></div>
+    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Cyber Security, Blockchain</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> OtterSec LLC</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> Visakhapatnam, India</div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="https://Sud0u53r.github.io/about/"> About Me</a></div><br /></div>
   </div>
 </section>
   <section class="featured-posts row card component">
     <div class="card-body">
       <h2 class="card-title">Featured Posts</h2>
-      <ul><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
-</a></li><li><a href="https://Sud0u53r.github.io/posts/kernelctf2021/">KernelCTF 2021 Writeups
+      <ul><li><a href="https://Sud0u53r.github.io/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
 </a></li></ul>
     </div>
   </section><section class="recent-posts row card component">
   <div class="card-body">
     <h2 class="card-title">Recent Posts</h2>
-    <ul><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
+    <ul><li><a href="https://Sud0u53r.github.io/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
+</a></li><li><a href="https://Sud0u53r.github.io/posts/dragonctf2021/">DragonCTF 2021 Writeup
 </a></li><li><a href="https://Sud0u53r.github.io/posts/kernelctf2021/">KernelCTF 2021 Writeups
 </a></li><li><a href="https://Sud0u53r.github.io/posts/tokyowesternsctf2020/">TokyoWesterns CTF 2020 Writeup [Urlcheck V1&amp;V2]
 </a></li><li><a href="https://Sud0u53r.github.io/posts/allesctf2020/">AllesCTF 2020 Writeup [Only Freights]
-</a></li><li><a href="https://Sud0u53r.github.io/posts/gynvael-coldwind-twitter-challenges/">Gynvael Coldwind Twitter Challenges
 </a></li></ul>
   </div>
 </section><section class="taxonomies row card component">
@@ -476,8 +475,14 @@ $$</p>
             ctfs
           </a><a href="https://Sud0u53r.github.io/tags/web/" class="badge bg-primary text-white rounded post-taxonomy" title="web">
             web
+          </a><a href="https://Sud0u53r.github.io/tags/blockchain/" class="badge bg-primary text-white rounded post-taxonomy" title="blockchain">
+            blockchain
           </a><a href="https://Sud0u53r.github.io/tags/challenge/" class="badge bg-primary text-white rounded post-taxonomy" title="challenge">
             challenge
+          </a><a href="https://Sud0u53r.github.io/tags/ethereum/" class="badge bg-primary text-white rounded post-taxonomy" title="ethereum">
+            ethereum
+          </a><a href="https://Sud0u53r.github.io/tags/evm/" class="badge bg-primary text-white rounded post-taxonomy" title="evm">
+            evm
           </a><a href="https://Sud0u53r.github.io/tags/misc/" class="badge bg-primary text-white rounded post-taxonomy" title="misc">
             misc
           </a><a href="https://Sud0u53r.github.io/tags/twitter/" class="badge bg-primary text-white rounded post-taxonomy" title="twitter">
@@ -499,10 +504,10 @@ $$</p>
         <i class="fa-fw fa-2x fab fa-twitter"></i>
       </a></nav>
 <div class="copyright mb-2">
-  Copyright © 2018-2022 Akash Gurugunti. All Rights Reserved.
+  Copyright © 2018-2023 Akash Gurugunti. All Rights Reserved.
 </div>
 </footer>
-<script src="https://Sud0u53r.github.io/js/bundle.min.7bc8e502a64250aecf4fc34b32376b235f1ccfd00b5d1d7c8b4c587fd695735c.js" integrity="sha256-e8jlAqZCUK7PT8NLMjdrI18cz9ALXR18i0xYf9aVc1w=" crossorigin="anonymous" defer></script><script defer src="https://Sud0u53r.github.io/js/viewer.min.8009d731f8f286eba7810e149f470a6d38d8e496d51395b90ca7f2d0431e5516.js" integrity="sha256-gAnXMfjyhuungQ4Un0cKbTjY5JbVE5W5DKfy0EMeVRY=" crossorigin="anonymous"></script><script defer src="https://Sud0u53r.github.io/js/katex.min.9f106aeac559dd4631d9ae0297c064cc4faf49bcdab9d75eb03f573f0ea90a66.js" integrity="sha256-nxBq6sVZ3UYx2a4Cl8BkzE&#43;vSbzauddesD9XPw6pCmY=" crossorigin="anonymous"></script>
+<script src="https://Sud0u53r.github.io/js/bundle.min.dfff1fab09c570894e719d1447ee731c8bb5a1e57e18d45beff274823da322f0.js" integrity="sha256-3/8fqwnFcIlOcZ0UR&#43;5zHIu1oeV&#43;GNRb7/J0gj2jIvA=" crossorigin="anonymous" defer></script><script defer src="https://Sud0u53r.github.io/js/viewer.min.2b366f6cb186c9ce6e41936589e36005bc87d36452602e9aea75f196009e8b95.js" integrity="sha256-KzZvbLGGyc5uQZNlieNgBbyH02RSYC6a6nXxlgCei5U=" crossorigin="anonymous"></script><script defer src="https://Sud0u53r.github.io/js/katex.min.affcdb0c3de1260e0074ae86bffee9280f85eb73debefdce021e5d030c262a17.js" integrity="sha256-r/zbDD3hJg4AdK6Gv/7pKA&#43;F63Pevv3OAh5dAwwmKhc=" crossorigin="anonymous"></script>
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

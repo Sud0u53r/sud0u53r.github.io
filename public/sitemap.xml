@@ -1,107 +1,77 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>https://Sud0u53r.github.io/tags/blockchain/</loc>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
     <loc>https://Sud0u53r.github.io/categories/</loc>
-    <lastmod>2021-11-28T17:46:54+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
     <loc>https://Sud0u53r.github.io/categories/ctf/</loc>
-    <lastmod>2021-11-28T17:46:54+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
     <loc>https://Sud0u53r.github.io/tags/ctfs/</loc>
-    <lastmod>2021-11-28T17:46:54+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
+    <loc>https://Sud0u53r.github.io/tags/ethereum/</loc>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
+    <loc>https://Sud0u53r.github.io/posts/ethernaut-challenges/</loc>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
+    <loc>https://Sud0u53r.github.io/tags/evm/</loc>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
+    <loc>https://Sud0u53r.github.io/posts/</loc>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
+    <loc>https://Sud0u53r.github.io/</loc>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
+    <loc>https://Sud0u53r.github.io/tags/</loc>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
+    <loc>https://Sud0u53r.github.io/tags/writeups/</loc>
+    <lastmod>2022-03-21T14:01:31+05:30</lastmod>
+  </url><url>
     <loc>https://Sud0u53r.github.io/posts/dragonctf2021/</loc>
     <lastmod>2021-11-28T17:46:54+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Sud0u53r.github.io/posts/</loc>
-    <lastmod>2021-11-28T17:46:54+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Sud0u53r.github.io/</loc>
-    <lastmod>2021-11-28T17:46:54+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Sud0u53r.github.io/tags/</loc>
-    <lastmod>2021-11-28T17:46:54+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/tags/web/</loc>
     <lastmod>2021-11-28T17:46:54+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://Sud0u53r.github.io/tags/writeups/</loc>
-    <lastmod>2021-11-28T17:46:54+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/posts/kernelctf2021/</loc>
     <lastmod>2021-11-17T19:16:01+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/tags/misc/</loc>
     <lastmod>2021-11-17T19:16:01+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/posts/tokyowesternsctf2020/</loc>
     <lastmod>2020-09-20T08:59:00+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/posts/allesctf2020/</loc>
     <lastmod>2020-09-06T07:34:48+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/tags/challenge/</loc>
     <lastmod>2020-08-27T08:59:32+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/posts/gynvael-coldwind-twitter-challenges/</loc>
     <lastmod>2020-08-27T08:59:32+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/tags/twitter/</loc>
     <lastmod>2020-08-27T08:59:32+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/categories/twitter-challenge/</loc>
     <lastmod>2020-08-27T08:59:32+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/archives/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/search/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://Sud0u53r.github.io/series/</loc>
   </url>
-  
 </urlset>
