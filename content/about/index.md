@@ -1,7 +1,7 @@
 +++
 title = "About"
 description = "About me"
-date = "2025-02-21"
+date = "2025-02-20"
 aliases = ["about-me"]
 author = "Akash Gurugunti"
 reward = false
