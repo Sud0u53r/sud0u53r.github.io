@@ -8,7 +8,8 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true # If you use only one language comment this option
 
 # Pagination
-paginate = 5
+[pagination]
+pagerSize = 5
 # paginatePath = "page"
 
 # Google analytics

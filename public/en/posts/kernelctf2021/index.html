@@ -1,0 +1,503 @@
+<!doctype html><html lang="en"
+   data-mode="dark">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KernelCTF 2021 Writeups | Sud0u53r&#39;s Blog</title><link rel="apple-touch-icon" href="http://localhost:1313/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="http://localhost:1313/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="http://localhost:1313/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="http://localhost:1313/images/favicons/manifest.json">
+<link rel="icon" href="http://localhost:1313/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="KernelCTF 2021 Writeups for Progressive Dynamite, Bogo Solve &amp; Bogo Attack (unintended solutions)" />
+
+<meta itemprop="name" content="KernelCTF 2021 Writeups">
+<meta itemprop="description" content="KernelCTF 2021 Writeups for Progressive Dynamite, Bogo Solve &amp; Bogo Attack (unintended solutions)"><meta itemprop="datePublished" content="2021-11-17T19:16:01+05:30" />
+<meta itemprop="dateModified" content="2021-11-17T19:16:01+05:30" />
+<meta itemprop="wordCount" content="1382"><meta itemprop="image" content='http://localhost:1313/en/posts/kernelctf2021/images/_card.png'>
+<meta itemprop="keywords" content="ctfs,writeups,misc," /><meta property="og:title" content="KernelCTF 2021 Writeups" />
+<meta property="og:description" content="KernelCTF 2021 Writeups for Progressive Dynamite, Bogo Solve &amp; Bogo Attack (unintended solutions)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/en/posts/kernelctf2021/" /><meta property="og:image" content='http://localhost:1313/en/posts/kernelctf2021/images/_card.png' /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-11-17T19:16:01+05:30" />
+<meta property="article:modified_time" content="2021-11-17T19:16:01+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content='http://localhost:1313/en/posts/kernelctf2021/images/_card.png'/>
+
+<meta name="twitter:title" content="KernelCTF 2021 Writeups"/>
+<meta name="twitter:description" content="KernelCTF 2021 Writeups for Progressive Dynamite, Bogo Solve &amp; Bogo Attack (unintended solutions)"/>
+<link rel="preload" href="http://localhost:1313/css/bundle.min.01de153b8016128bb7e4bbe9a9889c916c2aa0ad91c9f1d0964179ebb4854647.css" integrity="sha256-Ad4VO4AWEou35LvpqYickWwqoK2RyfHQlkF567SFRkc=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="http://localhost:1313/css/bundle.min.01de153b8016128bb7e4bbe9a9889c916c2aa0ad91c9f1d0964179ebb4854647.css" integrity="sha256-Ad4VO4AWEou35LvpqYickWwqoK2RyfHQlkF567SFRkc=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter" type="text/css" media="all" />
+<style>
+ body { font-family: 'Inter'; }
+ code { font-family: 'Fira Code'; }
+ code { tab-size: 4; }
+</style></head>
+  <body><script src="http://localhost:1313/js/bootstrap.min.062c2e66b557cb779d59cedff7e0cc76e84beb665a1076e474e87d940be44245.js" integrity="sha256-BiwuZrVXy3edWc7f9&#43;DMduhL62ZaEHbkdOh9lAvkQkU=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button><a class="navbar-brand me-3" href="http://localhost:1313/en/">Sud0u53r&#39;s Blog
+    </a>
+    <button class="navbar-social-share" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSocialShare"
+  aria-controls="offcanvasSocialShare" aria-label="Toggle social share">
+  <i class="fas fa-share-alt"></i>
+</button>
+
+<div class="offcanvas offcanvas-bottom surface" tabindex="-1" id="offcanvasSocialShare" aria-labelledby="offcanvasSocialShare">
+  <div class="offcanvas-header">
+    <h3 class="offcanvas-title">Share</h3>
+    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-dismiss="offcanvas" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <a class="btn btn-sm btn-outline-primary social-share-button" rel="noopener noreferrer" aria-label="Twitter Share Button"
+      target="_blank" href="https://twitter.com/intent/tweet?title=KernelCTF%202021%20Writeups&url=http%3a%2f%2flocalhost%3a1313%2fen%2fposts%2fkernelctf2021%2f">
+      <i class="fab fa-fw fa-twitter"></i> Twitter
+    </a>
+    <a class="btn btn-sm btn-outline-primary social-share-button" rel="noopener noreferrer" aria-label="Facebook Share Button"
+      target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fen%2fposts%2fkernelctf2021%2f">
+      <i class="fab fa-fw fa-facebook-f"></i> Facebook
+    </a>
+  </div>
+</div>
+    <button class="navbar-settings" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSettings"
+  aria-controls="offcanvasSettings" aria-label="Toggle settings">
+  <i class="fas fa-ellipsis-v"></i>
+</button>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasSettings">
+  <div class="offcanvas-header">
+    <h3 class="offcanvas-title">Settings</h3>
+    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-dismiss="offcanvas" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+
+
+
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> Font Size</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+
+<section class="setting palettes">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-palette"></i> Palette</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <a id="btnPalette" class="btn btn-sm btn-outline-primary" role="button" aria-label="palettePicker">
+        <i class="fas fa-eye-dropper"></i>
+      </a>
+    </div>
+  </form>
+  <div class="mt-2 d-flex visually-hidden" id="palettePicker"><button type="button" id="palette-blue" aria-label="Blue"
+        class="btn btn-sm palette" data-palette="blue">
+      </button><button type="button" id="palette-blue-gray" aria-label="Blue Gray"
+        class="btn btn-sm palette" data-palette="blue-gray">
+      </button><button type="button" id="palette-brown" aria-label="Brown"
+        class="btn btn-sm palette" data-palette="brown">
+      </button><button type="button" id="palette-cyan" aria-label="Cyan"
+        class="btn btn-sm palette" data-palette="cyan">
+      </button><button type="button" id="palette-green" aria-label="Green"
+        class="btn btn-sm palette" data-palette="green">
+      </button><button type="button" id="palette-indigo" aria-label="Indigo"
+        class="btn btn-sm palette" data-palette="indigo">
+      </button><button type="button" id="palette-orange" aria-label="Orange"
+        class="btn btn-sm palette" data-palette="orange">
+      </button><button type="button" id="palette-pink" aria-label="Pink"
+        class="btn btn-sm palette" data-palette="pink">
+      </button><button type="button" id="palette-purple" aria-label="Purple"
+        class="btn btn-sm palette" data-palette="purple">
+      </button><button type="button" id="palette-red" aria-label="Red"
+        class="btn btn-sm palette" data-palette="red">
+      </button><button type="button" id="palette-teal" aria-label="Teal"
+        class="btn btn-sm palette" data-palette="teal">
+      </button><button type="button" id="palette-yellow" aria-label="Yellow"
+        class="btn btn-sm palette" data-palette="yellow">
+      </button></div>
+</section>
+</div>
+</div>
+
+    <div class="collapse navbar-collapse" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContent">
+      
+      <ul class="navbar-nav ms-auto"><li class="nav-item">
+          <a class="nav-link" href="http://localhost:1313/en/archives/">
+            <i class="fas fa-fw fa-file-archive"></i>Archives
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="http://localhost:1313/en/categories/">
+            <i class="fas fa-fw fa-folder"></i>Categories
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="http://localhost:1313/en/tags/">
+            <i class="fas fa-fw fa-tags"></i>Tags
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="http://localhost:1313/en/series/">
+            <i class="fas fa-fw fa-columns"></i>Series
+          </a>
+        </li></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body">
+    <ol class="breadcrumb "><li class="breadcrumb-item"><a href="http://localhost:1313/en/">Home</a></li><li class="breadcrumb-item"><a href="http://localhost:1313/en/posts/">Posts</a></li><li class="breadcrumb-item active">KernelCTF 2021 Writeups</li></ol>
+  </div>
+</nav>    <article class="row card component mb-4 post"><div class="post-panel-wrapper">
+  <div class="d-flex flex-column component rounded post-panel">
+    
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+  
+    
+
+    
+    
+    <a class="action" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+    
+  </div>
+</div>
+<div class="card-body">
+        <h1 class="card-title my-3">KernelCTF 2021 Writeups
+</h1><div class="post-meta"><span class="post-date" title="created on">
+    <i class="fas fa-fw fa-calendar-alt"></i>Nov 17, 2021
+  </span><span class="post-reading-time" title="reading time">
+    <i class="fas fa-fw fa-coffee"></i>7 min read
+  </span><a href="http://localhost:1313/en/categories/ctf/" class="badge rounded-pill text-white bg-primary post-taxonomy">ctf</a><a href="http://localhost:1313/en/tags/ctfs/" class="badge rounded-pill text-white bg-primary post-taxonomy">ctfs</a><a href="http://localhost:1313/en/tags/writeups/" class="badge rounded-pill text-white bg-primary post-taxonomy">writeups</a><a href="http://localhost:1313/en/tags/misc/" class="badge rounded-pill text-white bg-primary post-taxonomy">misc</a></div>
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title" id="offcanvasTOCLabel">Table Of Contents</h5>
+      <button type="button" class="btn btn-sm btn-outline-primary" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-progressive-dynamite-100500-79-solves">1. Progressive Dynamite [100/500] (79 solves)</a></li>
+    <li><a href="#2-bogo-solve-249500-56-solves">2. Bogo Solve [249/500] (56 solves)</a></li>
+    <li><a href="#3-bogo-attack-442500-27-solves">3. Bogo Attack [442/500] (27 solves)</a></li>
+    <li><a href="#intended-solution">Intended solution</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3"><p>Hey, there! After a looong gap, I&rsquo;m back to CTFs.<br>
+I have played <a href="https://ctftime.org/event/1438" target="_blank" rel="noopener noreferrer">KernelCTF 2021</a>
+ with team <a href="https://ctftime.org/team/116018" target="_blank" rel="noopener noreferrer">zh3r0</a>
+. We ended up at #9 worldwide.<br>
+I solved 3 Misc challenges &ndash; Progressive Dynamite, Bogo Solve &amp; Bogo Attack.</p>
+<h2 id="1-progressive-dynamite-100500-79-solves">1. Progressive Dynamite [100/500] (79 solves)</h2>
+<p><img class="img-fluid" alt="progressive_dynamite_problem.png" src="http://localhost:1313/en/posts/kernelctf2021/images/progressive_dynamite_problem.png" loading="lazy"
+   width="798" height="332"
+   />
+
+</p>
+<p>    As mentioned above, the challenge is pretty simple. We were given a <a href="files/progressive_dynamite/challenge.txt">challenge.txt</a>
+. It is a 2D matrix of size 100x100 with very big integers and we have to find a way from top left to bottom right, by moving only bottom or right at a time, such that the total sum of number along the way is as low as possible.</p>
+<p>    For people who are good at competitive coding, this challenge will be a piece of cake. Luckily, I have some experience with algorithm techniques like divide and conquer, dynamic programming, etc., and I have used dynamic programming approach to solve this problem.</p>
+<p>Solution: <a href="files/progressive_dynamite/solve.py">progressive_dynamite_solve.py</a>
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> long_to_bytes <span style="color:#75715e"># pip3 install pycrypto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;challenge.txt&#39;</span>) <span style="color:#66d9ef">as</span> f: l <span style="color:#f92672">=</span> eval(f<span style="color:#f92672">.</span>read())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dp <span style="color:#f92672">=</span> list([list([<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>)]) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>)])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">solve</span>(l, i, j):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> dp[i][j] <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>: <span style="color:#66d9ef">return</span> dp[i][j]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> len(l) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> sum(l[i][j:])
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> j <span style="color:#f92672">==</span> len(l) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> sum(x[j] <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> l[i:])
+</span></span><span style="display:flex;"><span>	dp[i][j] <span style="color:#f92672">=</span> l[i][j] <span style="color:#f92672">+</span> min(solve(l, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, j), solve(l, i, j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> dp[i][j]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> solve(l, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">-=</span> <span style="color:#ae81ff">38396724472483865997960720090198028896</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Flag:&#39;</span>, long_to_bytes(x)<span style="color:#f92672">.</span>decode())
+</span></span></code></pre></div><p>    Here, the total no.of possibilities that have to be checked to solve this problem is,
+$$
+\dfrac{(99 + 99)!}{99! * 99!} = 2.275 * 10^{58}
+$$</p>
+<p>    But the trick here is, all those possibilities have common sub parts that are evaluated repetatively and unnecessarily. These parts are eliminated in dynamic programming approach, where once a part is evaluated, it is stored in a data structure and when the part has to be evaluated in another possibility, the stored value is used, instead of calculating it again.</p>
+<p>    In this way, the time complexity is reduced to <code>O(mn)</code> (no.of distinct function calls possible), where m &amp; n are parameters of the solve function, i.e., O(100*100) and space complexity becomes <code>O(mn)</code>.</p>
+<p>ps: After getting the minimal sum, I had to subtract the first number from the sum in order to get the correct flag.</p>
+<p>Flag: <code>flag{dyn4m1c_pr0gramm1ng_pr0!}</code></p>
+<hr>
+<h2 id="2-bogo-solve-249500-56-solves">2. Bogo Solve [249/500] (56 solves)</h2>
+<p><img class="img-fluid" alt="bogo_solve_problem.png" src="http://localhost:1313/en/posts/kernelctf2021/images/bogo_solve_problem.png" loading="lazy"
+   width="793" height="368"
+   />
+
+</p>
+<p>    We were given a netcat connection and a python program which is running behind that netcat connection. The given <a href="files/bogo_solve/main.py">main.py</a>
+ is,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>NUMS <span style="color:#f92672">=</span> list(range(<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>random<span style="color:#f92672">.</span>shuffle(NUMS)
+</span></span><span style="display:flex;"><span>tries <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span> <span style="color:#75715e"># Basically useless, not decremented anywhere!!!</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        n <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#39;Enter (1) to steal and (2) to guess: &#39;</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> tries<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>: <span style="color:#75715e"># Unreachable condition</span>
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#39;You ran out of tries. Bye!&#39;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            l <span style="color:#f92672">=</span> map(int,input(<span style="color:#e6db74">&#39;Enter numbers to steal: &#39;</span>)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>))
+</span></span><span style="display:flex;"><span>            output <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> l:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">&lt;=</span> i <span style="color:#f92672">&lt;</span> len(NUMS)
+</span></span><span style="display:flex;"><span>                output<span style="color:#f92672">.</span>append(NUMS[i])
+</span></span><span style="display:flex;"><span>            random<span style="color:#f92672">.</span>shuffle(output)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;Stolen:&#39;</span>,output)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>            l <span style="color:#f92672">=</span> list(map(int,input(<span style="color:#e6db74">&#39;What is the list: &#39;</span>)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> l <span style="color:#f92672">==</span> NUMS:
+</span></span><span style="display:flex;"><span>                print(open(<span style="color:#e6db74">&#39;flag.txt&#39;</span>,<span style="color:#e6db74">&#39;r&#39;</span>)<span style="color:#f92672">.</span>read())
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#39;NOPE&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;Not a choice.&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#39;Error. Nice Try...&#39;</span>)
+</span></span></code></pre></div><p>    So, what the program does is, it takes the list of numbers from 0 to 10,000 and shuffles them. After that, it takes input from the user, a list of space seperated indices, and if the indices are valid (exists b/w 0 and 10**4), the numbers at those indices are shuffled and returned to the user. We have to guess the correct order of 10**4 numbers and send it to server to get the flag.</p>
+<p>    The problem here is, the 2nd shuffle before giving the numbers. Since the numbers are shuffled before returing to the user, if we take more than one index at a time, we won&rsquo;t be able to recognise the original index of a number. With this in mind, we can try to get all the numbers one by one, by sending one index at a time, from 0 to 10,000. I quickly wrote the script for that, and it didn&rsquo;t work! It kept stopping after 140-150 iterations. Apparently, the server has certain limit for no.of requests or certain time to keep the connection open.</p>
+<p>    So, we have to find some other way to get all the numbers with significantly less no.of requests. The next day, after staring at the code for an hour, I got an idea. The idea is,</p>
+<blockquote>
+<ol>
+<li>Send indices 0 1 1 2 2 2 3 3 3 3 &hellip; to the server</li>
+<li>From the returned list, based on the count of each number, place it in a dictionary, with count as key and number as value</li>
+<li>Now, repeat the process 100 times, each time sending 100 indices with incrementing repetition.</li>
+</ol></blockquote>
+<p>Solution: <a href="files/bogo_solve/solve.py">bogo_solve.py</a>
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>conn <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;ctf.k3rn3l4rmy.com&#39;</span>, <span style="color:#e6db74">&#39;2237&#39;</span>)
+</span></span><span style="display:flex;"><span>l <span style="color:#f92672">=</span> [<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">4</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_flag</span>(conn, l):
+</span></span><span style="display:flex;"><span>	conn<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;2&#39;</span>)
+</span></span><span style="display:flex;"><span>	conn<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;: &#39;</span>)
+</span></span><span style="display:flex;"><span>	conn<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(l))
+</span></span><span style="display:flex;"><span>	print(conn<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;}&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_num</span>(conn, indexes):
+</span></span><span style="display:flex;"><span>	conn<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;1&#39;</span>)
+</span></span><span style="display:flex;"><span>	conn<span style="color:#f92672">.</span>sendline(indexes<span style="color:#f92672">.</span>encode())
+</span></span><span style="display:flex;"><span>	p <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)[<span style="color:#ae81ff">70</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> p<span style="color:#f92672">.</span>split(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;, &#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">solve</span>():
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>		s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>): 
+</span></span><span style="display:flex;"><span>			s <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(str(i<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span> <span style="color:#f92672">+</span> j) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(j <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span>
+</span></span><span style="display:flex;"><span>		ll <span style="color:#f92672">=</span> get_num(conn, s[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>		d <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> ll: d[ll<span style="color:#f92672">.</span>count(x)] <span style="color:#f92672">=</span> x
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> d:
+</span></span><span style="display:flex;"><span>			l[i<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span> <span style="color:#f92672">+</span> x <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> d[x]
+</span></span><span style="display:flex;"><span>		print(l<span style="color:#f92672">.</span>count(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>solve()
+</span></span><span style="display:flex;"><span>get_flag(conn, l)
+</span></span></code></pre></div><p>ps: This isn&rsquo;t the intended solution. You can find the intended solution <a href="#intended-solution">here</a>
+</p>
+<p>Flag: <code>flag{alg0r1thms_ar3_s0_c00l!}</code></p>
+<hr>
+<h2 id="3-bogo-attack-442500-27-solves">3. Bogo Attack [442/500] (27 solves)</h2>
+<p><img class="img-fluid" alt="bogo_attack_problem.png" src="http://localhost:1313/en/posts/kernelctf2021/images/bogo_attack_problem.png" loading="lazy"
+   width="798" height="346"
+   />
+
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>NUMS <span style="color:#f92672">=</span> list(range(<span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>random<span style="color:#f92672">.</span>shuffle(NUMS)
+</span></span><span style="display:flex;"><span>tries <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        n <span style="color:#f92672">=</span> int(input(<span style="color:#e6db74">&#39;Enter (1) to steal and (2) to guess: &#39;</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> tries<span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#39;You ran out of tries. Bye!&#39;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            l <span style="color:#f92672">=</span> map(int,input(<span style="color:#e6db74">&#39;Enter numbers to steal: &#39;</span>)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>))
+</span></span><span style="display:flex;"><span>            output <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> l:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">&lt;=</span> i <span style="color:#f92672">&lt;</span> len(NUMS)
+</span></span><span style="display:flex;"><span>                output<span style="color:#f92672">.</span>append(NUMS[i])
+</span></span><span style="display:flex;"><span>            random<span style="color:#f92672">.</span>shuffle(output)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;Stolen:&#39;</span>,output)
+</span></span><span style="display:flex;"><span>            tries<span style="color:#f92672">-=</span><span style="color:#ae81ff">1</span> <span style="color:#75715e"># tries decremented, so we got only 15 tries</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>            l <span style="color:#f92672">=</span> list(map(int,input(<span style="color:#e6db74">&#39;What is the list: &#39;</span>)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> l <span style="color:#f92672">==</span> NUMS:
+</span></span><span style="display:flex;"><span>                print(open(<span style="color:#e6db74">&#39;flag.txt&#39;</span>,<span style="color:#e6db74">&#39;r&#39;</span>)<span style="color:#f92672">.</span>read())
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#39;NOPE&#39;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;Not a choice.&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#39;Error. Nice Try...&#39;</span>)
+</span></span></code></pre></div><p>It is same as the <a href="#2-bogo-solve-249500-56-solves">Bogo Solve</a>
+ challenge, but the trails variable is decremented this time in <a href="files/bogo_attack/main.py">main.py</a>
+, so we have to do it in lesser no.of tries (15 tries only). So initially I tried to send &ldquo;0 1 1 2 2 2 &hellip; 1000 (1000 times)&rdquo;, but it failed because the data to be sent to the server for each request is over 1mb and pwntools or netcat is having problem with it and closing the connection. Stuck there for an hour or so.</p>
+<p>After some time, I got another idea.</p>
+<blockquote>
+<ol>
+<li>First use one try to get all the numbers in even indices.</li>
+<li>Then send &ldquo;0 1 2 2 3 3 4 4 4 5 5 5 &hellip;&rdquo; and we get 0th index and 1st index number 1 time. So we don&rsquo;t know which it at which index, so store them in list in dictionary, with count as key and list of numbers with that count as value.</li>
+<li>For each pair, to know which number is in even index and which one is in odd index, we can use even list we got earlier. If the number exists in even list, then it is of 0th index, otherwise 1st index and so on.</li>
+</ol></blockquote>
+<p>In this way, I used 14 tries, 716 numbers each time, to get the full list of numbers.</p>
+<p>Solution: <a href="files/bogo_attack/solve.py">bogo_attack_solve.py</a>
+</p>
+<p>ps: This isn&rsquo;t the intended solution either. You can find the intended solution <a href="#intended-solution">here</a>
+</p>
+<p>Flag: <code>flag{m0d1f13d_b1n4ry_s34rch!}</code></p>
+<h2 id="intended-solution">Intended solution</h2>
+<p>The intended solution is pretty awesome. I would never have thought of that. The intended way involves little bit of set theory.</p>
+<ol>
+<li>
+<p>First we get all the indices that has 0 in their 1st bit (MSB) and steal the numbers in those indices and store them in a set S0, then get indices that has 0 in their 2nd bit and store the stolen numbers in set S1, and so on.</p>
+</li>
+<li>
+<p>Now, if we want a number at an index, say at index 10 (0b000000000001010), all we have to do is
+$$
+NUMS[10] = S0 \cap S1 \cap S2 \cap &hellip; \cap S11&rsquo; \cap S12 \cap S13&rsquo; \cap S14
+$$</p>
+</li>
+<li>
+<p>Since the numbers are only 10**4 ( &lt; 2**15 ), 15 requests are enough for this method. In this way, after we get all the sets,we can perform these operations 10**4 times to get the correct list of shuffled numbers and submit them to get the flag.</p>
+</li>
+</ol>
+<p>Intended solution: <a href="files/bogo_attack/intended_solve.py">intended_solution.py</a>
+</p>
+<hr>
+<h5 align="center" id="thanks-for-reading">Thanks for reading!</h5></div><hr /><div class="post-navs d-flex mb-3 justify-content-evenly">
+  <div class="post-nav post-prev"><i class="fas fa-fw fa-chevron-left"></i>
+    <a href="http://localhost:1313/en/posts/tokyowesternsctf2020/">TokyoWesterns CTF 2020 Writeup [Urlcheck V1&amp;V2]
+</a>
+  </div><div class="post-nav post-next">
+    <a href="http://localhost:1313/en/posts/dragonctf2021/">DragonCTF 2021 Writeup
+</a>
+    <i class="fas fa-fw fa-chevron-right"></i>
+  </div></div><section class="related-posts-wrapper">
+    <h3>Related Posts</h3>
+    <ul class="related-posts"><li><a href="http://localhost:1313/en/posts/tokyowesternsctf2020/">TokyoWesterns CTF 2020 Writeup [Urlcheck V1&amp;V2]
+</a></li><li><a href="http://localhost:1313/en/posts/allesctf2020/">AllesCTF 2020 Writeup [Only Freights]
+</a></li><li><a href="http://localhost:1313/en/posts/gynvael-coldwind-twitter-challenges/">Gynvael Coldwind Twitter Challenges
+</a></li><li><a href="http://localhost:1313/en/about/">About
+</a></li></ul>
+  </section></div>
+    </article></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container">
+    
+    <section class="card row text-center profile component">
+  <div class="card-body">
+    <div class="col-12 d-flex align-items-center justify-content-center"><img class="profile-avatar rounded-circle" alt="Akash Gurugunti" src="http://localhost:1313/images/me.jpg" loading="lazy"
+  
+   />
+</div>
+    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Cyber Security, Blockchain</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> OtterSec LLC</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> <a href='https://goo.gl/maps/FAU9GUmrdMSmuBBG8' target='_blank'>Hyderabad, India</a></div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="http://localhost:1313/en/about/"> About Me</a></div><br /></div>
+  </div>
+</section>
+  <section class="featured-posts row card component">
+    <div class="card-body">
+      <h2 class="card-title">Featured Posts</h2>
+      <ul><li><a href="http://localhost:1313/en/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
+</a></li></ul>
+    </div>
+  </section><section class="recent-posts row card component">
+  <div class="card-body">
+    <h2 class="card-title">Recent Posts</h2>
+    <ul><li><a href="http://localhost:1313/en/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
+</a></li><li><a href="http://localhost:1313/en/posts/dragonctf2021/">DragonCTF 2021 Writeup
+</a></li><li><a href="http://localhost:1313/en/posts/kernelctf2021/">KernelCTF 2021 Writeups
+</a></li><li><a href="http://localhost:1313/en/posts/tokyowesternsctf2020/">TokyoWesterns CTF 2020 Writeup [Urlcheck V1&amp;V2]
+</a></li><li><a href="http://localhost:1313/en/posts/allesctf2020/">AllesCTF 2020 Writeup [Only Freights]
+</a></li></ul>
+  </div>
+</section><section class="taxonomies row card component">
+      <div class="card-body">
+        <h2 class="card-title">
+          <a href="http://localhost:1313/en/categories">Categories</a>
+        </h2>
+        <div><a href="http://localhost:1313/en/categories/ctf/" class="badge bg-primary text-white rounded post-taxonomy" title="Ctf">
+            Ctf
+          </a><a href="http://localhost:1313/en/categories/twitter-challenge/" class="badge bg-primary text-white rounded post-taxonomy" title="Twitter Challenge">
+            Twitter Challenge
+          </a></div>
+      </div>
+    </section><section class="taxonomies row card component">
+      <div class="card-body">
+        <h2 class="card-title">
+          <a href="http://localhost:1313/en/tags">Tags</a>
+        </h2>
+        <div><a href="http://localhost:1313/en/tags/writeups/" class="badge bg-primary text-white rounded post-taxonomy" title="Writeups">
+            Writeups
+          </a><a href="http://localhost:1313/en/tags/ctfs/" class="badge bg-primary text-white rounded post-taxonomy" title="Ctfs">
+            Ctfs
+          </a><a href="http://localhost:1313/en/tags/web/" class="badge bg-primary text-white rounded post-taxonomy" title="Web">
+            Web
+          </a><a href="http://localhost:1313/en/tags/blockchain/" class="badge bg-primary text-white rounded post-taxonomy" title="Blockchain">
+            Blockchain
+          </a><a href="http://localhost:1313/en/tags/challenge/" class="badge bg-primary text-white rounded post-taxonomy" title="Challenge">
+            Challenge
+          </a><a href="http://localhost:1313/en/tags/ethereum/" class="badge bg-primary text-white rounded post-taxonomy" title="Ethereum">
+            Ethereum
+          </a><a href="http://localhost:1313/en/tags/evm/" class="badge bg-primary text-white rounded post-taxonomy" title="Evm">
+            Evm
+          </a><a href="http://localhost:1313/en/tags/misc/" class="badge bg-primary text-white rounded post-taxonomy" title="Misc">
+            Misc
+          </a><a href="http://localhost:1313/en/tags/twitter/" class="badge bg-primary text-white rounded post-taxonomy" title="Twitter">
+            Twitter
+          </a></div>
+      </div>
+    </section>
+    
+  </div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2018-2025 Akash Gurugunti. All Rights Reserved.
+</div>
+</footer>
+<script src="http://localhost:1313/js/bundle.min.c99ccec30e35b24fea35d63b3b2168d0cad943a0dc22a99e7567111424c8608d.js" integrity="sha256-yZzOww41sk/qNdY7OyFo0MrZQ6DcIqmedWcRFCTIYI0=" crossorigin="anonymous" defer></script><script defer src="http://localhost:1313/js/viewer.min.116cccec7db7ce374835844bc02e425669b3ce679c12c9d7d4770f0956022bad.js" integrity="sha256-EWzM7H23zjdINYRLwC5CVmmzzmecEsnX1HcPCVYCK60=" crossorigin="anonymous"></script><script defer src="http://localhost:1313/js/katex.min.eebc778ed32c63652f7c9fc84c2ac3adf593d26fed4352f5245ec510c725ef1b.js" integrity="sha256-7rx3jtMsY2UvfJ/ITCrDrfWT0m/tQ1L1JF7FEMcl7xs=" crossorigin="anonymous"></script>
+</body>
+</html>

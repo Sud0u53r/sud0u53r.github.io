@@ -2,12 +2,18 @@
 {{- $pageNumber := "" -}}
 {{- $paginator := false -}}
 {{- if .IsHome -}}
-{{- $sections := default (slice "posts") .Site.Params.mainSections -}}
-{{- $paginator = .Paginate (where .Site.RegularPages "Type" "in" $sections) -}}
+  {{- $sections := default (slice "posts") .Site.Params.mainSections -}}
+  {{ if .IsNode }}
+    {{- $paginator = .Paginate (where .Site.RegularPages "Type" "in" $sections) -}}
+  {{ end }}
 {{- else if eq .Kind "taxonomy" -}}
-{{- $paginator = .Paginate .Pages (default 10 .Site.Params.taxonomyPaginate) -}}
-{{- else if and (ne .Kind "page") (ne .Kind "section") -}}
-{{- $paginator = .Paginate .RegularPagesRecursive -}}
+  {{ if .IsNode }}
+    {{- $paginator = .Paginate .Pages (default 10 .Site.Params.taxonomyPaginate) -}}
+  {{ end }}
+{{- else -}}
+  {{ if .IsNode }}
+    {{- $paginator = .Paginate .RegularPagesRecursive -}}
+  {{ end }}
 {{- end -}}
 
 {{- if $paginator -}}

