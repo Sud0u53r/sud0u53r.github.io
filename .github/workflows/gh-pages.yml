@@ -30,7 +30,7 @@ jobs:
         run: hugo --minify
 
       - name: Upload Pages Artifact
-        uses: actions/upload-artifact@v4  # Ensures correct version
+        uses: actions/upload-pages-artifact@v2  # Ensures correct version
         with:
           path: ./public  # Hugo output directory
 
