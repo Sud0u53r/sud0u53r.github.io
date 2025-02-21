@@ -42,7 +42,7 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3  # Ensures correct version
         with:
-          path: ./static-pages/  # Hugo output directory
+          path: ./public/  # Hugo output directory
 
       - name: Deploy to GitHub Pages
         id: deployment
