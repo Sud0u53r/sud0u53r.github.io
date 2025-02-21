@@ -32,13 +32,14 @@ jobs:
 
       - name: Test
         run: |
-          ls
-          ls ./public
+          mkdir static-pages
+          echo "<html> <h1> Hello </h1> </html>" >> ./static-pages/index.html
+          cat ./static-pages/index.html
           
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3  # Ensures correct version
         with:
-          path: ./public  # Hugo output directory
+          path: ./static-pages/  # Hugo output directory
 
       - name: Deploy to GitHub Pages
         id: deployment
