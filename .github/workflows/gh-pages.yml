@@ -1,15 +1,15 @@
-name: github pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main # Set a branch to deploy
+      - main  # Deploy when pushing to main
   pull_request:
 
 permissions:
   contents: read
   pages: write
-  id-token: write  # Needed for authentication with GitHub Pages
+  id-token: write  # Required for authentication with GitHub Pages
 
 jobs:
   build:
