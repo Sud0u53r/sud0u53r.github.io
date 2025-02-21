@@ -33,12 +33,6 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      # - name: Test
-      #   run: |
-      #     mkdir static-pages
-      #     echo "<html> <h1> Hello </h1> </html>" >> ./static-pages/index.html
-      #     cat ./static-pages/index.html
-          
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3  # Ensures correct version
         with:
@@ -47,37 +41,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4  # Deploy using the correct method
-
-
-# name: github pages
-
-# on:
-#     push:
-#         branches:
-#             - main # Set a branch to deploy
-#     pull_request:
-
-# jobs:
-#     deploy:
-#         runs-on: ubuntu-22.04
-#         steps:
-#             - uses: actions/checkout@v2
-#               with:
-#                   submodules: true # Fetch Hugo themes (true OR recursive)
-#                   fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
-
-#             - name: Setup Hugo
-#               uses: peaceiris/actions-hugo@v2
-#               with:
-#                   hugo-version: "latest"
-#                   # extended: true
-
-#             - name: Build
-#               run: hugo --minify
-
-#             - name: Deploy Hugo
-#               uses: peaceiris/actions-gh-pages@v3
-#               if: github.ref == 'refs/heads/main'
-#               with:
-#                   github_token: ${{ secrets.GITHUB_TOKEN }}
-#                   publish_dir: ./public
