@@ -33,6 +33,11 @@ jobs:
       - name: Build
         run: hugo --minify
 
+      - name: Adding custom domain redirection
+        run: |
+          echo "blog.sud0u53r.com" >> ./public/CNAME
+          cat ./public/CNAME
+
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3  # Ensures correct version
         with:
