@@ -4,3 +4,5 @@ To run locally:
 ```
 hugo serve
 ```
+
+Feel free to raise a PR to make any corrections to the blog content!
