@@ -35,7 +35,7 @@ jobs:
 
       - name: Adding custom domain redirection
         run: |
-          echo "blog.sud0u53r.com" > ./public/CNAME
+          echo "sud0u53r.github.io" > ./public/CNAME
           cat ./public/CNAME
 
       - name: Upload Pages Artifact
